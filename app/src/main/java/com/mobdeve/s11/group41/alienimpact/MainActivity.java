@@ -13,8 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnPlay;
     Button btnTutorial;
-    Button btnUserPreference;
-    Button btnGameOption;
+    Button btnExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,18 +36,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btnUserPreference.setOnClickListener(new View.OnClickListener() {
+        btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, InputPreferenceActivity.class);
-                startActivity(intent);
-            }
-        });
-        btnGameOption.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, GameOptionActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }
@@ -56,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private void initComponent() {
         btnPlay = findViewById(R.id.btnPlay);
         btnTutorial = findViewById(R.id.btnTutorial);
-        btnUserPreference = findViewById(R.id.btnInputPreference);
-        btnGameOption = findViewById(R.id.btnGameOption);
+        btnExit = findViewById(R.id.btnInputPreference);
     }
 
     private void setFullscreen() {

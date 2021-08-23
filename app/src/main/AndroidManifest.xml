@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".GameOptionActivity"></activity>
-        <activity android:name=".InputPreferenceActivity" />
+        <activity android:name=".StatActivity"></activity>
+        <activity android:name=".ShopActivity" />
+        <activity android:name=".GameOptionActivity" />
         <activity android:name=".TutorialActivity" />
         <activity android:name=".GameActivity" />
         <activity android:name=".MainActivity">

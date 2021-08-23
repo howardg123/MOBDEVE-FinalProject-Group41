@@ -5,12 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.SeekBar;
 
 public class GameOptionActivity extends AppCompatActivity {
 
-    Button btnGameOptionBack;
-    Button btnGameOptionSave;
-    Button btnGameOptionDefault;
+    ImageButton ibGameOptionBack;
+    ImageButton ibGameOptionSave;
+    ImageButton ibGameOptionDefault;
+    ImageView ivPlayerIcon1;
+    ImageView ivPlayerIcon2;
+    ImageView ivPlayerIcon3;
+    EditText etOptionUserName;
+    SeekBar sbMusicVolume;
+    SeekBar sbGameVolume;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,20 +28,19 @@ public class GameOptionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_option);
         initComponent();
         setFullscreen();
-        btnGameOptionBack.setOnClickListener(new View.OnClickListener() {
+        ibGameOptionBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        btnGameOptionSave.setOnClickListener(new View.OnClickListener() {
+        ibGameOptionSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //save
-                finish();
             }
         });
-        btnGameOptionDefault.setOnClickListener(new View.OnClickListener() {
+        ibGameOptionDefault.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //default
@@ -40,9 +49,15 @@ public class GameOptionActivity extends AppCompatActivity {
     }
 
     private void initComponent() {
-        btnGameOptionBack = findViewById(R.id.btnGameOptionBack);
-        btnGameOptionSave = findViewById(R.id.btnGameOptionSave);
-        btnGameOptionDefault = findViewById(R.id.btnGameOptionDefault);
+        ibGameOptionBack = findViewById(R.id.ibGameOptionBack);
+        ibGameOptionSave = findViewById(R.id.ibGameOptionSave);
+        ibGameOptionDefault = findViewById(R.id.ibGameOptionDefault);
+        ivPlayerIcon1 = findViewById(R.id.ivPlayerIcon1);
+        ivPlayerIcon2 = findViewById(R.id.ivPlayerIcon2);
+        ivPlayerIcon3 = findViewById(R.id.ivPlayerIcon3);
+        etOptionUserName = findViewById(R.id.etOptionUserName);
+        sbMusicVolume = findViewById(R.id.sbMusicVolume);
+        sbGameVolume = findViewById(R.id.sbGameVolume);
     }
 
     private void setFullscreen() {

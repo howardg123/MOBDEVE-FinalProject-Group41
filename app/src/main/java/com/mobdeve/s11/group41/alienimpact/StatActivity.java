@@ -4,36 +4,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 
-public class InputPreferenceActivity extends AppCompatActivity {
+public class StatActivity extends AppCompatActivity {
 
-    Button btnPreferenceBack;
-    Button btnPreferenceSave;
+    ImageButton ibStatBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_input_preference);
-        setFullscreen();
+        setContentView(R.layout.activity_stat);
         initComponent();
-        btnPreferenceBack.setOnClickListener(new View.OnClickListener() {
+        setFullscreen();
+        ibStatBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        btnPreferenceSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //save
-            }
-        });
     }
 
     private void initComponent() {
-        btnPreferenceBack = findViewById(R.id.btnPreferenceBack);
-        btnPreferenceSave = findViewById(R.id.btnPreferenceSave);
+        ibStatBack = findViewById(R.id.ibStatBack);
     }
 
     private void setFullscreen() {
