@@ -98,12 +98,14 @@
 
     <ImageView
         android:id="@+id/ivGamePlayerIcon"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="4dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/dot"
         app:layout_constraintBottom_toTopOf="@+id/tvGameUserName"
-        app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:srcCompat="@drawable/dot" />
+        app:layout_constraintStart_toStartOf="@+id/guideline6" />
 
     <TextView
         android:id="@+id/tvGameUserName"
@@ -116,12 +118,12 @@
 
     <ImageView
         android:id="@+id/ivGamePetIcon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="4dp"
+        android:src="@drawable/dot"
         app:layout_constraintBottom_toTopOf="@+id/tvGamePetName"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:srcCompat="@drawable/dot" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline7" />
 
     <TextView
         android:id="@+id/tvGamePetName"
@@ -173,7 +175,7 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toStartOf="@+id/ibGameOption"
-        app:srcCompat="@drawable/dot" />
+        android:src="@drawable/dot" />
 
     <ImageButton
         android:id="@+id/ibGameOption"
@@ -182,6 +184,6 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/dot" />
+        android:src="@drawable/dot" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
