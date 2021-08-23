@@ -8,12 +8,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnPlay;
-    Button btnTutorial;
-    Button btnExit;
+    ImageButton ibPlay;
+    ImageButton ibExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,21 +22,15 @@ public class MainActivity extends AppCompatActivity {
         setFullscreen();
         setContentView(R.layout.activity_main);
         initComponent();
-        btnPlay.setOnClickListener(new View.OnClickListener() {
+        ibPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, GameActivity.class);
                 startActivity(intent);
             }
         });
-        btnTutorial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TutorialActivity.class);
-                startActivity(intent);
-            }
-        });
-        btnExit.setOnClickListener(new View.OnClickListener() {
+
+        ibExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -45,9 +39,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initComponent() {
-        btnPlay = findViewById(R.id.btnPlay);
-        btnTutorial = findViewById(R.id.btnTutorial);
-        btnExit = findViewById(R.id.btnInputPreference);
+        ibPlay = findViewById(R.id.ibPlay);
+        ibExit = findViewById(R.id.ibExit);
     }
 
     private void setFullscreen() {

@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline13"
-        app:srcCompat="@drawable/dot" />
+        app:srcCompat="@drawable/button_back" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"

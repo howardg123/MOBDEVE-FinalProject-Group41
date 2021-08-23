@@ -15,16 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRound" />
 
-    <Button
-        android:id="@+id/btnGameBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="BACK"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/tvStage"
         android:layout_width="wrap_content"
@@ -103,7 +93,7 @@
         android:layout_marginBottom="4dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        android:src="@drawable/dot"
+        android:src="@drawable/player_alien"
         app:layout_constraintBottom_toTopOf="@+id/tvGameUserName"
         app:layout_constraintStart_toStartOf="@+id/guideline6" />
 
@@ -121,7 +111,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginBottom="4dp"
-        android:src="@drawable/dot"
+        android:src="@drawable/pet_cat"
         app:layout_constraintBottom_toTopOf="@+id/tvGamePetName"
         app:layout_constraintEnd_toStartOf="@+id/guideline7" />
 
@@ -173,17 +163,17 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:scaleType="fitXY"
+        android:src="@drawable/button_stats"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
-        app:layout_constraintEnd_toStartOf="@+id/ibGameOption"
-        android:src="@drawable/dot" />
+        app:layout_constraintEnd_toStartOf="@+id/ibGameOption" />
 
     <ImageButton
         android:id="@+id/ibGameOption"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:scaleType="fitXY"
+        android:src="@drawable/button_settings"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/dot" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,8 +2,11 @@ package com.mobdeve.s11.group41.alienimpact;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -17,7 +20,6 @@ import android.widget.TextView;
 public class GameActivity extends Activity {
 
     SurfaceView surface;
-    Button btnGameBack;
     Button btnGameShop;
     ImageButton ibGameStat;
     ImageButton ibGameOption;
@@ -32,6 +34,9 @@ public class GameActivity extends Activity {
     ImageView ivGamePlayerIcon;
     ImageView ivGamePetIcon;
     ProgressBar pbHPBar;
+    private Bitmap bmp;
+    private Bitmap bmpScaled;
+    int nEnemy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +44,6 @@ public class GameActivity extends Activity {
         setFullscreen();
         setContentView(R.layout.activity_game);
         initComponent();
-        btnGameBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         btnGameShop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +75,10 @@ public class GameActivity extends Activity {
             public void surfaceCreated(SurfaceHolder holder) {
                 // Do some drawing when surface is ready
                 Canvas canvas = holder.lockCanvas();
-                canvas.drawColor(Color.argb(255,0, 0,255));
+                canvas.drawColor(Color.TRANSPARENT);
+                bmp = BitmapFactory.decodeResource(getResources(), R.drawable.alien_drone);
+                bmpScaled = Bitmap.createScaledBitmap(bmp, canvas.getWidth(), canvas.getHeight(), true);
+                canvas.drawBitmap(bmpScaled, 0, 0, null);
                 holder.unlockCanvasAndPost(canvas);
             }
 
@@ -92,7 +94,6 @@ public class GameActivity extends Activity {
 
     private void initComponent() {
         surface = findViewById(R.id.surfaceGame);
-        btnGameBack = findViewById(R.id.btnGameBack);
         btnGameShop = findViewById(R.id.btnGameShop);
         ibGameStat = findViewById(R.id.ibGameStat);
         ibGameOption = findViewById(R.id.ibGameOption);

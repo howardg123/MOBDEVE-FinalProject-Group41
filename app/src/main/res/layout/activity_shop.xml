@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toStartOf="@+id/ibShopBuff"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/dot" />
+        app:srcCompat="@drawable/button_back" />
 
     <ImageButton
         android:id="@+id/ibShopBuff"
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toStartOf="@+id/ibShopWeapon"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ibShopBack"
-        app:srcCompat="@drawable/dot" />
+        app:srcCompat="@drawable/button_buffs" />
 
     <ImageButton
         android:id="@+id/ibShopWeapon"
@@ -53,7 +53,7 @@
         app:layout_constraintEnd_toStartOf="@+id/ibShopPets"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ibShopBuff"
-        app:srcCompat="@drawable/dot" />
+        app:srcCompat="@drawable/wep_2_4_greatsword" />
 
     <ImageButton
         android:id="@+id/ibShopPets"
@@ -64,5 +64,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ibShopWeapon"
-        app:srcCompat="@drawable/dot" />
+        app:srcCompat="@drawable/button_pets" />
 </androidx.constraintlayout.widget.ConstraintLayout>

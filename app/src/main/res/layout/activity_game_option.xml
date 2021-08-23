@@ -70,7 +70,7 @@
         android:layout_height="90dp"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:srcCompat="@drawable/dot" />
+        app:srcCompat="@drawable/player_human_a" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -88,7 +88,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ivPlayerIcon1"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:srcCompat="@drawable/dot" />
+        app:srcCompat="@drawable/player_human_b" />
 
     <ImageView
         android:id="@+id/ivPlayerIcon3"
@@ -97,7 +97,7 @@
         android:adjustViewBounds="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:srcCompat="@drawable/dot" />
+        app:srcCompat="@drawable/player_alien" />
 
     <EditText
         android:id="@+id/etOptionUserName"
@@ -128,7 +128,7 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:srcCompat="@drawable/dot" />
+        app:srcCompat="@drawable/button_confirm" />
 
     <ImageButton
         android:id="@+id/ibGameOptionDefault"
@@ -138,7 +138,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/ibGameOptionSave"
         app:layout_constraintStart_toEndOf="@+id/ibGameOptionBack"
-        app:srcCompat="@drawable/dot" />
+        app:srcCompat="@drawable/button_default_settings" />
 
     <ImageButton
         android:id="@+id/ibGameOptionBack"
@@ -147,6 +147,6 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:srcCompat="@drawable/dot" />
+        app:srcCompat="@drawable/button_back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

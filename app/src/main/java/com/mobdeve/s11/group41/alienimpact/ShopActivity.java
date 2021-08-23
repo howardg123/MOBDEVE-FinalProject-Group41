@@ -20,6 +20,12 @@ public class ShopActivity extends AppCompatActivity {
         initComponent();
         setFullscreen();
 
+        ibShopBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initComponent() {
