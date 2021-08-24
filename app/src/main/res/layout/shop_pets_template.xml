@@ -14,6 +14,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:background="#3D4F2B"
             android:padding="80dp"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -7,7 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#3D4F2B">
 
         <ImageButton
             android:id="@+id/ibShopBuyOne"
@@ -15,6 +16,7 @@
             android:layout_height="80dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
+            android:background="#3D4F2B"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toStartOf="@+id/guideline18"
             app:layout_constraintTop_toTopOf="parent"
@@ -40,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:text="x50"
+            android:textColor="#EEFFCC"
             android:textSize="55sp"
             app:layout_constraintEnd_toStartOf="@+id/ibShopBuyOne"
             app:layout_constraintStart_toEndOf="@+id/ivShopItemPicture"
@@ -49,6 +52,7 @@
             android:id="@+id/ivShopItemPicture"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:background="#3D4F2B"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline17"
             app:layout_constraintTop_toTopOf="parent"
@@ -60,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="X FOR 1"
+            android:textColor="#EEFFCC"
             app:layout_constraintEnd_toStartOf="@+id/ibShopBuyTen"
             app:layout_constraintStart_toEndOf="@+id/ivShopItemPicture"
             app:layout_constraintTop_toBottomOf="@+id/tvShopQuantity" />
@@ -70,6 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="X FOR 10"
+            android:textColor="#EEFFCC"
             app:layout_constraintEnd_toStartOf="@+id/ibShopBuyTen"
             app:layout_constraintStart_toEndOf="@+id/ivShopItemPicture"
             app:layout_constraintTop_toBottomOf="@+id/tvShopForOne" />
@@ -80,6 +86,7 @@
             android:layout_height="80dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:background="#3D4F2B"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline18"

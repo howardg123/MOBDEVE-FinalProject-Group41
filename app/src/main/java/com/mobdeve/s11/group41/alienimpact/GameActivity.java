@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -17,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class GameActivity extends Activity {
+public class GameActivity extends Activity{
 
     SurfaceView surface;
     Button btnGameShop;
@@ -44,7 +43,7 @@ public class GameActivity extends Activity {
         setFullscreen();
         setContentView(R.layout.activity_game);
         initComponent();
-
+        this.nEnemy = 0;
         btnGameShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,13 +72,8 @@ public class GameActivity extends Activity {
 
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
-                // Do some drawing when surface is ready
-                Canvas canvas = holder.lockCanvas();
-                canvas.drawColor(Color.TRANSPARENT);
                 bmp = BitmapFactory.decodeResource(getResources(), R.drawable.alien_drone);
-                bmpScaled = Bitmap.createScaledBitmap(bmp, canvas.getWidth(), canvas.getHeight(), true);
-                canvas.drawBitmap(bmpScaled, 0, 0, null);
-                holder.unlockCanvasAndPost(canvas);
+                drawEnemy(bmp);
             }
 
             @Override
@@ -88,8 +82,59 @@ public class GameActivity extends Activity {
 
             @Override
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+                System.out.println("changed");
             }
         });
+
+        surface.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int hp = 0; //Implement next time
+                if (hp == 0) {
+                    System.out.println("click");
+                    //nextEnemy();
+                    //drawEnemy(bmp);
+                }
+            }
+        });
+
+    }
+
+    private void nextEnemy() {
+        if (nEnemy < 5) {
+            this.nEnemy++;
+        }
+        else {
+            this.nEnemy = 0;
+        }
+        switch(nEnemy){
+            case 0:
+                this.bmp = BitmapFactory.decodeResource(getResources(), R.drawable.alien_drone);
+                break;
+            case 1:
+                this.bmp = BitmapFactory.decodeResource(getResources(), R.drawable.alien_face_hugger);
+                break;
+            case 2:
+                this.bmp = BitmapFactory.decodeResource(getResources(), R.drawable.alien_xenomorph);
+                break;
+            case 3:
+                this.bmp = BitmapFactory.decodeResource(getResources(), R.drawable.alien_graylien);
+                break;
+            case 4:
+                this.bmp = BitmapFactory.decodeResource(getResources(), R.drawable.alien_sus);
+                break;
+            case 5:
+                this.bmp = BitmapFactory.decodeResource(getResources(), R.drawable.alien_mothership);
+                break;
+        }
+    }
+
+    private void drawEnemy(Bitmap bmp) {
+        Canvas canvas = surface.getHolder().lockCanvas();
+        canvas.drawColor(Color.TRANSPARENT);
+        bmpScaled = Bitmap.createScaledBitmap(bmp, canvas.getWidth(), canvas.getHeight(), true);
+        canvas.drawBitmap(bmpScaled, 0, 0, null);
+        surface.getHolder().unlockCanvasAndPost(canvas);
     }
 
     private void initComponent() {
