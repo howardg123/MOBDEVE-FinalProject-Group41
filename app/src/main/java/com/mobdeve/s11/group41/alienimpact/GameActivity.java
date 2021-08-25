@@ -92,8 +92,12 @@ public class GameActivity extends Activity{
                 int hp = 0; //Implement next time
                 if (hp == 0) {
                     System.out.println("click");
-                    //nextEnemy();
-                    //drawEnemy(bmp);
+                    MyDatabaseHelper myDB = new MyDatabaseHelper(GameActivity.this);
+                    //nextEnemy(); //update round and stage
+                    //drawEnemy(bmp); //draw
+                    myDB.updateScrap(5); //increase scrap
+
+                    System.out.println("@@@@@@@@@@@@@@" + myDB.getScrap());
                 }
             }
         });

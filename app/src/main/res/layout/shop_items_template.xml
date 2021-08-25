@@ -41,9 +41,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
+            android:fontFamily="@font/apple_kid"
             android:text="x50"
             android:textColor="#EEFFCC"
-            android:textSize="55sp"
+            android:textSize="96sp"
             app:layout_constraintEnd_toStartOf="@+id/ibShopBuyOne"
             app:layout_constraintStart_toEndOf="@+id/ivShopItemPicture"
             app:layout_constraintTop_toTopOf="parent" />
@@ -63,8 +64,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/apple_kid"
             android:text="X FOR 1"
             android:textColor="#EEFFCC"
+            android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/ibShopBuyTen"
             app:layout_constraintStart_toEndOf="@+id/ivShopItemPicture"
             app:layout_constraintTop_toBottomOf="@+id/tvShopQuantity" />
@@ -74,8 +77,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/apple_kid"
             android:text="X FOR 10"
             android:textColor="#EEFFCC"
+            android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/ibShopBuyTen"
             app:layout_constraintStart_toEndOf="@+id/ivShopItemPicture"
             app:layout_constraintTop_toBottomOf="@+id/tvShopForOne" />

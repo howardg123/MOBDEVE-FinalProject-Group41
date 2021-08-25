@@ -21,9 +21,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/apple_kid"
         android:text="STAGE 1"
         android:textColor="#EEFFCC"
-        android:textSize="20sp"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,8 +33,10 @@
         android:id="@+id/tvRound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/apple_kid"
         android:text="ROUND 1"
         android:textColor="#EEFFCC"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvStage" />
@@ -43,9 +46,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="sussy alien"
+        android:fontFamily="@font/apple_kid"
+        android:text="SUSSY ALIEN"
         android:textColor="#EEFFCC"
-        android:textSize="16sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toBottomOf="@+id/surfaceGame" />
 
@@ -68,8 +72,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/apple_kid"
         android:text="30/30 HP"
         android:textColor="#EEFFCC"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/surfaceGame" />
 
@@ -87,8 +93,10 @@
         android:id="@+id/tvDPS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/apple_kid"
         android:text="50 DMG/s"
         android:textColor="#EEFFCC"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/pbHpBar" />
 
@@ -108,8 +116,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/apple_kid"
         android:text="PLAYER NAME"
         android:textColor="#EEFFCC"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline6" />
 
@@ -127,8 +137,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/apple_kid"
         android:text="PET NAME"
         android:textColor="#EEFFCC"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toStartOf="@+id/guideline7" />
 
@@ -143,11 +155,12 @@
         android:id="@+id/tvGameScrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/apple_kid"
         android:text="22 SCRAP"
         android:textColor="#EEFFCC"
-        android:textSize="20sp"
+        android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/btnGameShop"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -156,9 +169,10 @@
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:background="@drawable/button_outline"
+        android:fontFamily="@font/apple_kid"
         android:text="SHOP"
         android:textColor="#EEFFCC"
-        android:textSize="34sp"
+        android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toStartOf="@+id/ibGameStat"
         app:layout_constraintStart_toStartOf="parent" />
