@@ -234,9 +234,11 @@ public class GameActivity extends Activity {
 
     private void drawEnemy() {
         Canvas canvas = surface.getHolder().lockCanvas();
-        canvas.drawColor(Color.TRANSPARENT);
-        bmpScaled = Bitmap.createScaledBitmap(bmp, canvas.getWidth(), canvas.getHeight(), true);
-        canvas.drawBitmap(bmpScaled, 0, 0, null);
+        canvas.drawColor(Color.rgb(61, 79, 43));
+        bmpScaled = Bitmap.createScaledBitmap(bmp, 550, 550, true);
+        int left  = (canvas.getWidth() - bmpScaled.getWidth())/2;
+        int top  = (canvas.getHeight() - bmpScaled.getHeight())/2;
+        canvas.drawBitmap(bmpScaled, left, top, null);
         surface.getHolder().unlockCanvasAndPost(canvas);
     }
 
