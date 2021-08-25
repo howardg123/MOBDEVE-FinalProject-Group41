@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
     ImageButton ibPlay;
     ImageButton ibExit;
 
+    MyDatabaseHelper myDB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setFullscreen();
         setContentView(R.layout.activity_main);
         initComponent();
+        myDB = new MyDatabaseHelper(MainActivity.this);
         ibPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
