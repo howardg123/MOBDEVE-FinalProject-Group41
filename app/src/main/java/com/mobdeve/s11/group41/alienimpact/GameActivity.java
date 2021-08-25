@@ -275,6 +275,7 @@ public class GameActivity extends Activity {
         //set enemy
         tvEnemyHp.setText(myDB.getGameHP() + "/" + enemyMaxHP + " HP");
         tvEnemyName.setText(enemyName);
+        pbHPBar.setProgress((int)Math.floor(((float)myDB.getGameHP()/enemyMaxHP) * 100));
         //set player name and icon
         setPlayerAndIcon();
         //set pet name and icon
