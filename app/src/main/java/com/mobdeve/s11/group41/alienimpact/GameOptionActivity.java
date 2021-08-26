@@ -26,6 +26,7 @@ public class GameOptionActivity extends AppCompatActivity {
 
     int nGameProgress;
     int nMusicProgress;
+    boolean bDefault;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class GameOptionActivity extends AppCompatActivity {
         initComponent();
         setFullscreen();
         setComponent();
+        bDefault = false;
 
         ibGameOptionBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,21 +49,31 @@ public class GameOptionActivity extends AppCompatActivity {
         ibGameOptionSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //save
-                //Set volumes
-                myDB.updateGameVolume(nGameProgress);
-                myDB.updateMusicVolume(nMusicProgress);
-                //Set name
-                myDB.updatePlayerName(etOptionUserName.getText().toString().trim());
-                //Set picture
-                if (ivPlayerIcon1.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.player_human_a).getConstantState())) {
+                if (bDefault == false) {
+                    //Set volumes
+                    myDB.updateGameVolume(nGameProgress);
+                    myDB.updateMusicVolume(nMusicProgress);
+                    //Set name
+                    myDB.updatePlayerName(etOptionUserName.getText().toString().trim());
+                    //Set picture
+                    if (ivPlayerIcon1.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.player_human_a).getConstantState())) {
+                        myDB.updatePlayerIcon(0);
+                    }
+                    else if (ivPlayerIcon2.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.player_human_b).getConstantState())) {
+                        myDB.updatePlayerIcon(1);
+                    }
+                    else if (ivPlayerIcon3.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.player_alien).getConstantState())) {
+                        myDB.updatePlayerIcon(2);
+                    }
+                }
+                else {
+                    //Set volumes
+                    myDB.updateGameVolume(100);
+                    myDB.updateMusicVolume(100);
+                    //Set name
+                    myDB.updatePlayerName("BOB");
+                    //Set icon
                     myDB.updatePlayerIcon(0);
-                }
-                else if (ivPlayerIcon2.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.player_human_b).getConstantState())) {
-                    myDB.updatePlayerIcon(1);
-                }
-                else if (ivPlayerIcon3.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.player_alien).getConstantState())) {
-                    myDB.updatePlayerIcon(2);
                 }
             }
         });
@@ -69,6 +81,16 @@ public class GameOptionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //default
+                bDefault = true;
+                //default icon
+                ivPlayerIcon1.setImageResource(R.drawable.player_human_a);
+                ivPlayerIcon2.setImageResource(R.drawable.player_human_b_unselected);
+                ivPlayerIcon3.setImageResource(R.drawable.player_alien_unselected);
+                //default name
+                etOptionUserName.setText("BOB");
+                //default volume
+                sbGameVolume.setProgress(100);
+                sbMusicVolume.setProgress(100);
             }
         });
 
