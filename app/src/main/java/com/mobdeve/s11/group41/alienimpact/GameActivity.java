@@ -145,6 +145,7 @@ public class GameActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(GameActivity.this, GameOptionActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

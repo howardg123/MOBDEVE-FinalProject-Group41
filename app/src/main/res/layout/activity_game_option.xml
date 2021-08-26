@@ -75,7 +75,7 @@
         android:layout_height="90dp"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:srcCompat="@drawable/player_human_a" />
+        app:srcCompat="@drawable/player_human_a_unselected" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -93,7 +93,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ivPlayerIcon1"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:srcCompat="@drawable/player_human_b" />
+        app:srcCompat="@drawable/player_human_b_unselected" />
 
     <ImageView
         android:id="@+id/ivPlayerIcon3"
@@ -102,7 +102,7 @@
         android:adjustViewBounds="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:srcCompat="@drawable/player_alien" />
+        app:srcCompat="@drawable/player_alien_unselected" />
 
     <EditText
         android:id="@+id/etOptionUserName"
