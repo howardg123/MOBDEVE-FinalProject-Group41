@@ -8,6 +8,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.media.AudioAttributes;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.GestureDetector;
@@ -58,6 +61,16 @@ public class GameActivity extends Activity {
     int enemyMaxHP;
     String enemyName;
 
+    MediaPlayer mediaPlayer;
+    SoundPool soundPool;
+    SoundPool.Builder soundPoolBuilder;
+    AudioAttributes attributes;
+    AudioAttributes.Builder attributesBuilder;
+    int soundID_hold;
+    int soundID_hold_shoot;
+    int soundID_tap_shoot;
+    int soundID_swipe;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +93,21 @@ public class GameActivity extends Activity {
             }
         });
 
+
+        attributesBuilder = new AudioAttributes.Builder();
+        attributesBuilder.setUsage(AudioAttributes.USAGE_GAME);
+        attributesBuilder.setContentType(AudioAttributes.CONTENT_TYPE_MOVIE);
+        attributes = attributesBuilder.build();
+
+        soundPoolBuilder = new SoundPool.Builder();
+        soundPoolBuilder.setAudioAttributes(attributes);
+        soundPool = soundPoolBuilder.build();
+
+        soundID_hold = soundPool.load(this, R.raw.shoot, 1);
+        soundID_hold_shoot = soundPool.load(this, R.raw.hold_shot, 2);
+        soundID_tap_shoot = soundPool.load(this, R.raw.tap_shot, 2);
+        soundID_swipe = soundPool.load(this, R.raw.swipe, 2);
+
         ivMotionGesture.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -87,6 +115,9 @@ public class GameActivity extends Activity {
                 switch (event.getAction()) {
 
                     case MotionEvent.ACTION_DOWN:
+                        if (mediaPlayer == null)
+                            startShoot();
+                        mediaPlayer.start();
                         x1 = event.getX();
                         y1 = event.getY();
                         t1 = SystemClock.uptimeMillis();
@@ -95,35 +126,42 @@ public class GameActivity extends Activity {
                         x2 = event.getX();
                         y2 = event.getY();
                         t2 = SystemClock.uptimeMillis();
+                        mediaPlayer.stop();
+                        stopShoot();
                         if (x1 == x2 && y1 == y2 && (t2 - t1) < 1000) {
                             System.out.println("click");
                             buffs = 0;
                             damageEnemy(1 + (2 * buffs));
                             checkEnemy();
+                            soundPool.play(soundID_tap_shoot,1, 1, 0, 0, 1);
                         }
                         else if ((t2 - t1) >= 1000 && (t2 - t1) < 2000) { //1 to 1.99 seconds
                             System.out.println("hold");
                             buffs = myDB.getHoldLevel();
                             damageEnemy(5 + (40 * buffs));
                             checkEnemy();
+                            soundPool.play(soundID_hold_shoot,1, 1, 0, 0, 1);
                         }
                         else if ((t2 - t1) >= 2000 && (t2 - t1) < 3000) { //2 to 2.99 seconds
                             System.out.println("hold");
                             buffs = myDB.getHoldLevel();
                             damageEnemy((5 + (40 * buffs))*2);
                             checkEnemy();
+                            soundPool.play(soundID_hold_shoot,1, 1, 0, 0, 1);
                         }
                         else if ((t2 - t1) >= 3000) { // 3 seconds above
                             System.out.println("hold");
                             buffs = myDB.getHoldLevel();
                             damageEnemy((5 + (40 * buffs))*3);
                             checkEnemy();
+                            soundPool.play(soundID_hold_shoot,1, 1, 0, 0, 1);
                         }
                         else if ((x1 != x2) || (y1 != y2) ) {
                             System.out.println("swipe");
                             buffs = myDB.getHoldLevel();
                             damageEnemy(10 + (360 * buffs));
                             checkEnemy();
+                            soundPool.play(soundID_swipe,1, 1, 0, 0, 1);
                         }
                         return true;
                 }
@@ -167,6 +205,15 @@ public class GameActivity extends Activity {
             }
         });
 
+    }
+
+    private void startShoot(){
+        mediaPlayer = MediaPlayer.create(this, R.raw.shoot);
+    }
+
+    private void stopShoot(){
+        mediaPlayer.release();
+        mediaPlayer = null;
     }
 
     private void setEnemy() {
