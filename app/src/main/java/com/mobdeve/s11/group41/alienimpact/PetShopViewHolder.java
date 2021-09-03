@@ -1,6 +1,7 @@
 package com.mobdeve.s11.group41.alienimpact;
 
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ImageView;
 
@@ -14,6 +15,7 @@ public class PetShopViewHolder extends RecyclerView.ViewHolder {
     private ImageView ivPicture;
     private TextView tvName;
     private TextView tvEffect;
+    private ImageButton ibPetBuy;
 
     public PetShopViewHolder(@NonNull @NotNull View itemView) {
         super(itemView);
@@ -21,6 +23,7 @@ public class PetShopViewHolder extends RecyclerView.ViewHolder {
         this.ivPicture = itemView.findViewById(R.id.ivPetIcon);
         this.tvName = itemView.findViewById(R.id.tvPetName);
         this.tvEffect = itemView.findViewById(R.id.tvPetEffect);
+        this.ibPetBuy = itemView.findViewById(R.id.ibBuyPet);
     }
 
     public void setIvPicture (int pic) {this.ivPicture.setImageResource(pic);}
@@ -29,4 +32,5 @@ public class PetShopViewHolder extends RecyclerView.ViewHolder {
         String txt = effect + "; COST: " + Integer.toString(cost);
         this.tvEffect.setText(txt);
     }
+    public ImageButton getIbPetBuy () {return this.ibPetBuy;}
 }
