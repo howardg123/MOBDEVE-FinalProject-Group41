@@ -40,10 +40,11 @@ public class ShopDataHelper {
     //data for pets
     public static ArrayList<PetModel> initializePetData() {
         ArrayList<PetModel> petData = new ArrayList<>();
-        petData.add(new PetModel(R.drawable.pet_dog, "Dog", "deals 25% non-pet dmg; every min 10% chance to deal 1000% non-pet dmg for 1 min instead", 10000));
-        petData.add(new PetModel(R.drawable.pet_monkey, "Monkey", "deals 50% non-pet dmg; 20% dmg boost to non-pets", 50000));
-        petData.add(new PetModel(R.drawable.pet_turtle, "Turtle", "deals no dmg; 1000% dmg boost to player", 100000));
         petData.add(new PetModel(R.drawable.pet_cat, "Cat", "deals 100% non-pet dmg; offline dmg is 50% instead", 500000));
+        petData.add(new PetModel(R.drawable.pet_monkey, "Monkey", "deals 50% non-pet dmg; 20% dmg boost to non-pets", 50000));
+        petData.add(new PetModel(R.drawable.pet_dog, "Dog", "deals 25% non-pet dmg; every min 10% chance to deal 1000% non-pet dmg for 1 min instead", 10000));
+        petData.add(new PetModel(R.drawable.pet_turtle, "Turtle", "deals no dmg; 1000% dmg boost to player", 100000));
+
         return petData;
     }
 

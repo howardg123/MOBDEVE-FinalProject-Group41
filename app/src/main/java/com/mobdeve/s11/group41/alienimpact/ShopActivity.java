@@ -25,11 +25,13 @@ public class ShopActivity extends AppCompatActivity {
     private RecyclerView rv;
     private String shopMode = "null";
     private static final String KEY_MODE = "KEY_MODE";
+    MyDatabaseHelper myDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
+        myDB = new MyDatabaseHelper(ShopActivity.this);
         Intent i = new Intent(ShopActivity.this, ShopActivity.class);
         Bundle bInput = new Bundle();
         Bundle bGet = getIntent().getExtras();
@@ -132,7 +134,7 @@ public class ShopActivity extends AppCompatActivity {
         this.pets = new ShopDataHelper().initializePetData();
         this.rv = findViewById(R.id.rvShop);
         this.rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        this.rv.setAdapter(new PetShopAdapter(this.pets));
+        this.rv.setAdapter(new PetShopAdapter(this.pets, this.myDB, ShopActivity.this));
     }
 
     private void initComponent() {

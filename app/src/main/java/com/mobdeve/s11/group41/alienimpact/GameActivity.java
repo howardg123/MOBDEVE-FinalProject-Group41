@@ -1,6 +1,7 @@
 package com.mobdeve.s11.group41.alienimpact;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.gesture.Gesture;
@@ -79,7 +80,7 @@ public class GameActivity extends Activity {
         myDB = new MyDatabaseHelper(GameActivity.this);
         initComponent();
         //get enemymaxhp sharedpreference
-        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
+        SharedPreferences sh = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
         enemyMaxHP = sh.getInt("enemyMaxHP", (int)Math.ceil(myDB.getGamePrevHP() + 10 * Math.pow(1.15, 1 + myDB.getGameRound())));
         enemyName = sh.getString("enemyName","DRONE");
         nEnemy = sh.getInt("nEnemy", 0);
