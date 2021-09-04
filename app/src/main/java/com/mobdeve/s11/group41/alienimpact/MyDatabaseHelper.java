@@ -311,7 +311,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void updateTapLevel(int nLevel) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(BUFF_COLUMN_TAP_LEVEL, nLevel);
+        cv.put(BUFF_COLUMN_TAP_LEVEL, nLevel + getTapLevel());
 
         long result = db.update(BUFF_TABLE_NAME, cv, null, null);
         if (result == -1) {
@@ -334,11 +334,11 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return -1;
     }
 
-    //change tap level
+    //change hold level
     public void updateHoldLevel(int nLevel) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(BUFF_COLUMN_HOLD_LEVEL, nLevel);
+        cv.put(BUFF_COLUMN_HOLD_LEVEL, nLevel + getHoldLevel());
 
         long result = db.update(BUFF_TABLE_NAME, cv, null, null);
         if (result == -1) {
@@ -349,7 +349,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    //returns tap level
+    //returns hold level
     public int getHoldLevel() {
         String query = "SELECT " + BUFF_COLUMN_HOLD_LEVEL + " FROM " + BUFF_TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -365,7 +365,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void updateSwipeLevel(int nLevel) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(BUFF_COLUMN_SWIPE_LEVEL, nLevel);
+        cv.put(BUFF_COLUMN_SWIPE_LEVEL, nLevel + getSwipeLevel());
 
         long result = db.update(BUFF_TABLE_NAME, cv, null, null);
         if (result == -1) {

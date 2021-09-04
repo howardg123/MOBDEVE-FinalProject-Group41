@@ -1,6 +1,7 @@
 package com.mobdeve.s11.group41.alienimpact;
 
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ImageView;
 
@@ -16,6 +17,8 @@ public class ShopViewHolder extends RecyclerView.ViewHolder {
     private TextView tvOnePrice;
     private TextView tvTenPrice;
     private TextView tvName;
+    private ImageButton ibBuyOne;
+    private ImageButton ibBuyTen;
 
     public ShopViewHolder(@NonNull @NotNull View itemView) {
         super(itemView);
@@ -25,6 +28,8 @@ public class ShopViewHolder extends RecyclerView.ViewHolder {
         this.tvOnePrice = itemView.findViewById(R.id.tvShopForOne);
         this.tvTenPrice = itemView.findViewById(R.id.tvShopForTen);
         this.tvName = itemView.findViewById(R.id.tvWepName);
+        this.ibBuyOne = itemView.findViewById(R.id.ibShopBuyOne);
+        this.ibBuyTen = itemView.findViewById(R.id.ibShopBuyTen);
     }
 
     public void setIvPicture (int pic) {this.ivPicture.setImageResource(pic);}
@@ -41,4 +46,6 @@ public class ShopViewHolder extends RecyclerView.ViewHolder {
         this.tvTenPrice.setText(txt);
     }
     public void setTvName (String name){this.tvName.setText(name);}
+    public ImageButton getIbBuyOne () {return this.ibBuyOne;}
+    public ImageButton getIbBuyTen () {return this.ibBuyTen;}
 }

@@ -15,25 +15,25 @@ public class ShopDataHelper {
         //weapon names
         String[] fistNames = {"Fists", "Gloves", "Knuckledusters", "Fists of Doom", "Orichalcum Gauntlets"};
         String[] stickNames = {"Stick", "Club", "Katana", "Greatsword", "Energy Saber"};
-        String[] projectileNames = {"Slingshot", "Crossbow", "Pistol", "Assault Rifle", "Antimatter Launcher"};
+        String[] projectileNames = {"Blowgun", "Crossbow", "Pistol", "Assault Rifle", "Antimatter Launcher"};
         String[] artilleryNames = {"Trebuchet", "Cannon", "Mortal", "Missile", "Alien Railgun"};
         String[] supportNames = {"Carriage", "Steamboat", "Train", "Heli Carrier", "Teleporter"};
 
         ArrayList<WeaponModel> weaponData = new ArrayList<>();
-        weaponData.add(new WeaponModel(fistImages, fistNames, 0, 0, 10));
-        weaponData.add(new WeaponModel(stickImages, stickNames, 0, 0, 75));
-        weaponData.add(new WeaponModel(projectileImages, projectileNames, 0, 0, 800));
-        weaponData.add(new WeaponModel(artilleryImages, artilleryNames, 0, 0, 10000));
-        weaponData.add(new WeaponModel(supportImages, supportNames, 0, 0, 110000));
+        weaponData.add(new WeaponModel(fistImages, fistNames, 10));
+        weaponData.add(new WeaponModel(stickImages, stickNames, 75));
+        weaponData.add(new WeaponModel(projectileImages, projectileNames, 800));
+        weaponData.add(new WeaponModel(artilleryImages, artilleryNames, 10000));
+        weaponData.add(new WeaponModel(supportImages, supportNames, 110000));
         return weaponData;
     }
 
     //data for buffs
     public static ArrayList<BuffModel> initializeBuffData() {
         ArrayList<BuffModel> buffData = new ArrayList<>();
-        buffData.add(new BuffModel(R.drawable.buff_click, "Click", 0, 20));
-        buffData.add(new BuffModel(R.drawable.buff_hold, "Hold", 0, 200));
-        buffData.add(new BuffModel(R.drawable.buff_swipe, "Swipe", 0, 2000));
+        buffData.add(new BuffModel(R.drawable.buff_click, "Tap", 20));
+        buffData.add(new BuffModel(R.drawable.buff_hold, "Hold", 200));
+        buffData.add(new BuffModel(R.drawable.buff_swipe, "Swipe", 2000));
         return buffData;
     }
 

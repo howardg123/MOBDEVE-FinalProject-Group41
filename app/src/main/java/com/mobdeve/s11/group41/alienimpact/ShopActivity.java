@@ -38,12 +38,17 @@ public class ShopActivity extends AppCompatActivity {
         if (bGet != null)
             this.shopMode = bGet.getString(KEY_MODE, "null");
 
-        if (this.shopMode.equals("weapon"))
-            initWeapons();
-        else if (this.shopMode.equals("buff"))
-            initBuffs();
-        else
-            initPets();
+        switch (shopMode) {
+            case "pet":
+                initPets();
+                break;
+            case "buff":
+                initBuffs();
+                break;
+            default:
+                initWeapons();
+                break;
+        }
 
         initComponent();
         setFullscreen();
@@ -94,18 +99,6 @@ public class ShopActivity extends AppCompatActivity {
             }
         });
     }
-/*
-    @Override
-    protected void onResume() {
-        Bundle b = getIntent().getExtras();
-        this.shopMode = b.getString(KEY_MODE);
-        super.onResume();
-        if (this.shopMode.equals("weapon"))
-            initWeapons();
-        else
-            initBuffs();
-    }
-    */
 
     private void initBuffs () {
         View overlay = findViewById(R.id.rvShop);
@@ -114,7 +107,7 @@ public class ShopActivity extends AppCompatActivity {
         this.buffs = new ShopDataHelper().initializeBuffData();
         this.rv = findViewById(R.id.rvShop);
         this.rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        this.rv.setAdapter(new ShopAdapter(this.buffs));
+        this.rv.setAdapter(new ShopAdapter(this.buffs, this.myDB, ShopActivity.this));
     }
 
     private void initWeapons () {
@@ -124,7 +117,7 @@ public class ShopActivity extends AppCompatActivity {
         this.weapons = new ShopDataHelper().initializeWeaponData();
         this.rv = findViewById(R.id.rvShop);
         this.rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        this.rv.setAdapter(new ShopAdapter(this.weapons, 0));
+        this.rv.setAdapter(new ShopAdapter(this.weapons, this.myDB, ShopActivity.this, 0));
     }
 
     private void initPets() {
