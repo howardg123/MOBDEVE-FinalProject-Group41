@@ -208,6 +208,12 @@ public class GameActivity extends Activity {
 
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        tvGameScrap.setText(myDB.getScrap() + " SCRAP");
+    }
+
     private void startShoot(){
         mediaPlayer = MediaPlayer.create(this, R.raw.shoot);
     }

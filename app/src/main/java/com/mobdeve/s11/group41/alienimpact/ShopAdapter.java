@@ -39,11 +39,13 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
             holder.setTvQuantity(weapons.get(position).getAmount());
             holder.setTvOnePrice(weapons.get(position).getCost()); //to be edited to match scaling
             holder.setTvTenPrice(weapons.get(position).getCost() * 10); //to be edited to match scaling
+            holder.setTvName(weapons.get(position).getCurrentName());
         } else {
             holder.setIvPicture(buffs.get(position).getImage());
             holder.setTvQuantity(buffs.get(position).getAmount());
             holder.setTvOnePrice(buffs.get(position).getCost()); //to be edited to match scaling
             holder.setTvTenPrice(buffs.get(position).getCost() * 10); //to be edited to match scaling
+            holder.setTvName(buffs.get(position).getName());
         }
     }
 

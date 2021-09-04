@@ -15,6 +15,7 @@ public class ShopViewHolder extends RecyclerView.ViewHolder {
     private TextView tvQuantity;
     private TextView tvOnePrice;
     private TextView tvTenPrice;
+    private TextView tvName;
 
     public ShopViewHolder(@NonNull @NotNull View itemView) {
         super(itemView);
@@ -23,6 +24,7 @@ public class ShopViewHolder extends RecyclerView.ViewHolder {
         this.tvQuantity = itemView.findViewById(R.id.tvShopQuantity);
         this.tvOnePrice = itemView.findViewById(R.id.tvShopForOne);
         this.tvTenPrice = itemView.findViewById(R.id.tvShopForTen);
+        this.tvName = itemView.findViewById(R.id.tvWepName);
     }
 
     public void setIvPicture (int pic) {this.ivPicture.setImageResource(pic);}
@@ -38,4 +40,5 @@ public class ShopViewHolder extends RecyclerView.ViewHolder {
         String txt = Integer.toString(price) + " FOR 10";
         this.tvTenPrice.setText(txt);
     }
+    public void setTvName (String name){this.tvName.setText(name);}
 }

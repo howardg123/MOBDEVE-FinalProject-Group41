@@ -44,7 +44,7 @@
             android:fontFamily="@font/apple_kid"
             android:text="x50"
             android:textColor="#EEFFCC"
-            android:textSize="96sp"
+            android:textSize="70sp"
             app:layout_constraintEnd_toStartOf="@+id/ibShopBuyOne"
             app:layout_constraintStart_toEndOf="@+id/ivShopItemPicture"
             app:layout_constraintTop_toTopOf="parent" />
@@ -97,6 +97,20 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline18"
             app:layout_constraintTop_toBottomOf="@+id/ibShopBuyOne"
             app:srcCompat="@drawable/button_buy_10" />
+
+        <TextView
+            android:id="@+id/tvWepName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/apple_kid"
+            android:text="TextView"
+            android:textColor="#EEFFCC"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvShopForTen"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline17"
+            app:layout_constraintTop_toBottomOf="@+id/ivShopItemPicture" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
