@@ -17,8 +17,8 @@ import java.util.ArrayList;
 public class PetShopAdapter extends RecyclerView.Adapter<PetShopViewHolder> {
 
     private ArrayList<PetModel> pets;
-    MyDatabaseHelper myDB;
-    Context context;
+    private MyDatabaseHelper myDB;
+    private Context context;
 
     public PetShopAdapter(ArrayList<PetModel> pets, MyDatabaseHelper myDB, Context context) {
         this.pets = pets;
@@ -47,7 +47,7 @@ public class PetShopAdapter extends RecyclerView.Adapter<PetShopViewHolder> {
                             myDB.updatePet0Bought();
                             if (myDB.getPet0Bought() == 1) {
                                 myDB.removeScrap(pet_cost);
-                                Toast.makeText(context, pet_str + " purchased.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, pet_str + " purchased for " + pet_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else
                                 Toast.makeText(context, "Error occurred during purchase.", Toast.LENGTH_SHORT).show();
                         } else {
@@ -61,7 +61,7 @@ public class PetShopAdapter extends RecyclerView.Adapter<PetShopViewHolder> {
                             myDB.updatePet1Bought();
                             if (myDB.getPet1Bought() == 1) {
                                 myDB.removeScrap(pet_cost);
-                                Toast.makeText(context, pet_str + " purchased.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, pet_str + " purchased for " + pet_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else
                                 Toast.makeText(context, "Error occurred during purchase.", Toast.LENGTH_SHORT).show();
                         } else {
@@ -75,7 +75,7 @@ public class PetShopAdapter extends RecyclerView.Adapter<PetShopViewHolder> {
                             myDB.updatePet2Bought();
                             if (myDB.getPet2Bought() == 1) {
                                 myDB.removeScrap(pet_cost);
-                                Toast.makeText(context, pet_str + " purchased.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, pet_str + " purchased for " + pet_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else
                                 Toast.makeText(context, "Error occurred during purchase.", Toast.LENGTH_SHORT).show();
                         } else {
@@ -89,7 +89,7 @@ public class PetShopAdapter extends RecyclerView.Adapter<PetShopViewHolder> {
                             myDB.updatePet3Bought();
                             if (myDB.getPet3Bought() == 1) {
                                 myDB.removeScrap(pet_cost);
-                                Toast.makeText(context, pet_str + " purchased.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, pet_str + " purchased for " + pet_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else
                                 Toast.makeText(context, "Error occurred during purchase.", Toast.LENGTH_SHORT).show();
                         } else {
