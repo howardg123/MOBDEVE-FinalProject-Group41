@@ -131,7 +131,7 @@ public class GameActivity extends Activity {
                         stopShoot();
                         if (x1 == x2 && y1 == y2 && (t2 - t1) < 1000) {
                             System.out.println("click");
-                            buffs = 0;
+                            buffs = myDB.getTapLevel();
                             damageEnemy(1 + (2 * buffs));
                             checkEnemy();
                             soundPool.play(soundID_tap_shoot,1, 1, 0, 0, 1);
@@ -159,7 +159,7 @@ public class GameActivity extends Activity {
                         }
                         else if ((x1 != x2) || (y1 != y2) ) {
                             System.out.println("swipe");
-                            buffs = myDB.getHoldLevel();
+                            buffs = myDB.getSwipeLevel();
                             damageEnemy(10 + (360 * buffs));
                             checkEnemy();
                             soundPool.play(soundID_swipe,1, 1, 0, 0, 1);
