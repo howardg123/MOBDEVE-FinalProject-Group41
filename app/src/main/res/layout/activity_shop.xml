@@ -71,4 +71,19 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ibShopWeapon"
         app:srcCompat="@drawable/button_pets" />
+
+    <TextView
+        android:id="@+id/tvShopTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="13dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="TextView"
+        android:textColor="#EEFFCC"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/ibShopBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvShop" />
 </androidx.constraintlayout.widget.ConstraintLayout>

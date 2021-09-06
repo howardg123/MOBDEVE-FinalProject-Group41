@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ public class ShopActivity extends AppCompatActivity {
     ImageButton ibShopBuff;
     ImageButton ibShopWeapon;
     ImageButton ibShopPets;
+    TextView tvShopTitle;
     private ArrayList<WeaponModel> weapons;
     private ArrayList<BuffModel> buffs;
     private ArrayList<PetModel> pets;
@@ -37,6 +39,7 @@ public class ShopActivity extends AppCompatActivity {
         Bundle bGet = getIntent().getExtras();
         if (bGet != null)
             this.shopMode = bGet.getString(KEY_MODE, "null");
+        initComponent();
 
         switch (shopMode) {
             case "pet":
@@ -50,7 +53,7 @@ public class ShopActivity extends AppCompatActivity {
                 break;
         }
 
-        initComponent();
+
         setFullscreen();
 
         ibShopBack.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +106,7 @@ public class ShopActivity extends AppCompatActivity {
     private void initBuffs () {
         View overlay = findViewById(R.id.rvShop);
         overlay.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        this.tvShopTitle.setText("Buff Shop");
 
         this.buffs = new ShopDataHelper().initializeBuffData();
         this.rv = findViewById(R.id.rvShop);
@@ -113,6 +117,7 @@ public class ShopActivity extends AppCompatActivity {
     private void initWeapons () {
         View overlay = findViewById(R.id.rvShop);
         overlay.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        this.tvShopTitle.setText("Weapon Shop");
 
         this.weapons = new ShopDataHelper().initializeWeaponData();
         this.rv = findViewById(R.id.rvShop);
@@ -123,6 +128,7 @@ public class ShopActivity extends AppCompatActivity {
     private void initPets() {
         View overlay = findViewById(R.id.rvShop);
         overlay.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        this.tvShopTitle.setText("Pet Shop");
 
         this.pets = new ShopDataHelper().initializePetData();
         this.rv = findViewById(R.id.rvShop);
@@ -135,6 +141,7 @@ public class ShopActivity extends AppCompatActivity {
         ibShopBuff = findViewById(R.id.ibShopBuff);
         ibShopWeapon = findViewById(R.id.ibShopWeapon);
         ibShopPets = findViewById(R.id.ibShopPets);
+        tvShopTitle = findViewById(R.id.tvShopTitle);
     }
 
     private void setFullscreen() {
