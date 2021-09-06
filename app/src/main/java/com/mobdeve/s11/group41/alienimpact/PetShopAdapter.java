@@ -34,6 +34,34 @@ public class PetShopAdapter extends RecyclerView.Adapter<PetShopViewHolder> {
         View iv = inf.inflate(R.layout.shop_pets_template, parent, false);
         PetShopViewHolder vh = new PetShopViewHolder(iv);
 
+        //equip button functionality for each pet
+        vh.getBtnEquip().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String pet_str = pets.get(vh.getBindingAdapterPosition()).getName();
+                int pet_var = 0;
+                switch (pet_str) {
+                    case "Cat":
+                        pet_var = 0;
+                        break;
+                    case "Monkey":
+                        pet_var = 1;
+                        break;
+                    case "Dog":
+                        pet_var = 2;
+                        break;
+                    default:
+                        pet_var = 3;
+                        break;
+                }
+                myDB.updatePetUsed(pet_var);
+                Toast.makeText(context, "Pet set to " + pet_str + ".", Toast.LENGTH_SHORT).show();
+                PetShopAdapter.this.notifyDataSetChanged();
+            }
+        });
+
+
+        //buy button functionality for each pet
         vh.getIbPetBuy().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +125,7 @@ public class PetShopAdapter extends RecyclerView.Adapter<PetShopViewHolder> {
                         }
                         break;
                 }
+                PetShopAdapter.this.notifyDataSetChanged();
             }
         });
 
@@ -107,7 +136,42 @@ public class PetShopAdapter extends RecyclerView.Adapter<PetShopViewHolder> {
     public void onBindViewHolder(@NonNull @NotNull PetShopViewHolder holder, int position) {
         holder.setIvPicture(pets.get(position).getImage());
         holder.setTvEffect(pets.get(position).getEffect(), pets.get(position).getCost());
-        holder.setTvName(pets.get(position).getName());
+        String pet_str = pets.get(position).getName();
+        holder.setTvName(pet_str);
+        holder.setBtnEquip("EQUIP");
+
+        int pet_used = myDB.getPetUsed();
+        //sets visibility of equip buttons for each pet
+        switch (pet_str) {
+            case "Cat":
+                if (myDB.getPet0Bought() == 1) {
+                    holder.getBtnEquip().setVisibility(View.VISIBLE);
+                    if (pet_used == 0)
+                        holder.setBtnEquip("EQUIPPED");
+                }
+                break;
+            case "Monkey":
+                if (myDB.getPet1Bought() == 1) {
+                    holder.getBtnEquip().setVisibility(View.VISIBLE);
+                    if (pet_used == 1)
+                        holder.setBtnEquip("EQUIPPED");
+                }
+                break;
+            case "Dog":
+                if (myDB.getPet2Bought() == 1) {
+                    holder.getBtnEquip().setVisibility(View.VISIBLE);
+                    if (pet_used == 2)
+                        holder.setBtnEquip("EQUIPPED");
+                }
+                break;
+            default:
+                if (myDB.getPet3Bought() == 1) {
+                    holder.getBtnEquip().setVisibility(View.VISIBLE);
+                    if (pet_used == 3)
+                        holder.setBtnEquip("EQUIPPED");
+                }
+                break;
+        }
     }
 
     @Override

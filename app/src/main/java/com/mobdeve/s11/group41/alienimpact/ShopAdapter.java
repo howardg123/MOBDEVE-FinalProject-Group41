@@ -44,6 +44,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
         ShopViewHolder vh = new ShopViewHolder(iv);
 
         if (mode.equals("weapon")) {
+            //buy one button functionality for weapons
             vh.getIbBuyOne().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -111,6 +112,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                 }
             });
 
+            //buy ten button functionality for weapons
             vh.getIbBuyTen().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -178,6 +180,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                 }
             });
         } else {
+            //buy one button functionality for buffs
             vh.getIbBuyOne().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -223,6 +226,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                 }
             });
 
+            //buy ten button functionality for weapons
             vh.getIbBuyTen().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

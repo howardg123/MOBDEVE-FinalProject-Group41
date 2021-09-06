@@ -7,11 +7,25 @@
     android:background="#3D4F2B "
     tools:context=".GameOptionActivity">
 
+    <Button
+        android:id="@+id/btnTutorial"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:background="@drawable/button_outline"
+        android:fontFamily="@font/apple_kid"
+        android:text="TUTORIAL"
+        android:textColor="#EEFFCC"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
     <TextView
         android:id="@+id/tvGameVolume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/apple_kid"
         android:text="GAME VOLUME"
         android:textColor="#EEFFCC"
@@ -25,17 +39,16 @@
         android:id="@+id/sbMusicVolume"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="84dp"
         app:layout_constraintBottom_toTopOf="@+id/ibGameOptionDefault"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
 
     <SeekBar
         android:id="@+id/sbGameVolume"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/tvMusicVolume"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="1.0"
@@ -45,7 +58,7 @@
         android:id="@+id/tvMusicVolume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/apple_kid"
         android:text="MUSIC VOLUME"
         android:textColor="#EEFFCC"
@@ -73,8 +86,9 @@
         android:id="@+id/ivPlayerIcon1"
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayerIconTitle"
         app:srcCompat="@drawable/player_human_a_unselected" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -88,27 +102,29 @@
         android:id="@+id/ivPlayerIcon2"
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:layout_marginTop="8dp"
         android:adjustViewBounds="true"
         app:layout_constraintEnd_toStartOf="@+id/ivPlayerIcon3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ivPlayerIcon1"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayerIconTitle"
         app:srcCompat="@drawable/player_human_b_unselected" />
 
     <ImageView
         android:id="@+id/ivPlayerIcon3"
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:layout_marginTop="8dp"
         android:adjustViewBounds="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayerIconTitle"
         app:srcCompat="@drawable/player_alien_unselected" />
 
     <EditText
         android:id="@+id/etOptionUserName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:fontFamily="@font/apple_kid"
         android:inputType="textPersonName"
@@ -116,10 +132,11 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#EEFFCC"
-        android:textSize="60sp"
+        android:textSize="34sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/ivPlayerIcon2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayerNameTitle" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -158,5 +175,47 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:srcCompat="@drawable/button_back" />
+
+    <TextView
+        android:id="@+id/tvOptionsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/apple_kid"
+        android:text="Options"
+        android:textColor="#EEFFCC"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPlayerIconTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="PLAYER ICON"
+        android:textColor="#EEFFCC"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/tvPlayerNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="PLAYER NAME"
+        android:textColor="#EEFFCC"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/ivPlayerIcon1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

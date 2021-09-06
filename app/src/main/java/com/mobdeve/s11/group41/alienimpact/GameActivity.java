@@ -212,6 +212,7 @@ public class GameActivity extends Activity {
     protected void onResume(){
         super.onResume();
         tvGameScrap.setText(myDB.getScrap() + " SCRAP");
+        setPetAndIcon();
     }
 
     private void startShoot(){
@@ -375,20 +376,20 @@ public class GameActivity extends Activity {
                 ivGamePetIcon.setImageResource(R.drawable.button_pets);
                 break;
             case 0:
-                tvGamePetName.setText("DOG");
-                ivGamePetIcon.setImageResource(R.drawable.pet_dog);
+                tvGamePetName.setText("CAT");
+                ivGamePetIcon.setImageResource(R.drawable.pet_cat);
                 break;
             case 1:
                 tvGamePetName.setText("MONKEY");
                 ivGamePetIcon.setImageResource(R.drawable.pet_monkey);
                 break;
             case 2:
-                tvGamePetName.setText("TURTLE");
-                ivGamePetIcon.setImageResource(R.drawable.pet_turtle);
+                tvGamePetName.setText("DOG");
+                ivGamePetIcon.setImageResource(R.drawable.pet_dog);
                 break;
             case 3:
-                tvGamePetName.setText("CAT");
-                ivGamePetIcon.setImageResource(R.drawable.pet_cat);
+                tvGamePetName.setText("TURTLE");
+                ivGamePetIcon.setImageResource(R.drawable.pet_turtle);
                 break;
         }
     }

@@ -11,13 +11,27 @@
         android:layout_height="wrap_content"
         android:background="#3D4F2B">
 
+        <Button
+            android:id="@+id/btnPetEquip"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_outline"
+            android:fontFamily="@font/apple_kid"
+            android:text="EQUIP"
+            android:textColor="#EEFFCC"
+            android:textSize="30sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvPetEffect"
+            app:layout_constraintTop_toBottomOf="@+id/ibBuyPet" />
+
         <ImageButton
             android:id="@+id/ibBuyPet"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:backgroundTint="#3D4F2B"
             android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvPetEffect"
             app:layout_constraintTop_toTopOf="parent"
