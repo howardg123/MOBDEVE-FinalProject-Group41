@@ -86,4 +86,19 @@
         app:layout_constraintBottom_toTopOf="@+id/ibShopBack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvShop" />
+
+    <TextView
+        android:id="@+id/tvShopScrap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="13dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="TextView"
+        android:textColor="#EEFFCC"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/ibShopBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvShop" />
 </androidx.constraintlayout.widget.ConstraintLayout>

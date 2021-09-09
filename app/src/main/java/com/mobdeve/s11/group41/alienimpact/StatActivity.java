@@ -5,16 +5,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class StatActivity extends AppCompatActivity {
 
     ImageButton ibStatBack;
+    TextView tvNAliensKilled;
+    TextView tvNScrapsEarned;
+    TextView tvNScrapsSpent;
+    TextView tvNTaps;
+    TextView tvNHolds;
+    TextView tvNSwipes;
+    MyDatabaseHelper myDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stat);
+        myDB = new MyDatabaseHelper(StatActivity.this);
         initComponent();
+        setComponent();
         setFullscreen();
         ibStatBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,6 +36,27 @@ public class StatActivity extends AppCompatActivity {
 
     private void initComponent() {
         ibStatBack = findViewById(R.id.ibStatBack);
+        tvNAliensKilled = findViewById(R.id.tvNAliensKilled);
+        tvNScrapsEarned = findViewById(R.id.tvNTotalEarned);
+        tvNScrapsSpent = findViewById(R.id.tvNTotalSpent);
+        tvNTaps = findViewById(R.id.tvNTotalTaps);
+        tvNHolds = findViewById(R.id.tvNTotalHolds);
+        tvNSwipes = findViewById(R.id.tvNTotalSwipes);
+    }
+
+    private void setComponent() {
+        //Total alien killed
+        tvNAliensKilled.setText((myDB.getGameStage()-1) * 10 + (myDB.getGameRound()-1) + " ");
+        //Total scrap spent
+        tvNScrapsSpent.setText(myDB.getScrapSpent() + " ");
+        //Total scrap earned
+        tvNScrapsEarned.setText(myDB.getScrapEarned() + " ");
+        //Total taps
+        tvNTaps.setText(myDB.getTotalTaps() + " ");
+        //Total holds
+        tvNHolds.setText(myDB.getTotalHolds() + " ");
+        //Total swipes
+        tvNSwipes.setText(myDB.getTotalSwipes() + " ");
     }
 
     private void setFullscreen() {

@@ -22,6 +22,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String PLAYER_COLUMN_ICON = "player_icon";
     private static final String PLAYER_COLUMN_USERNAME = "player_username";
 
+    private static final String STAT_TABLE_NAME = "stat_table";
+    private static final String STAT_COLUMN_ID = "_id";
+    private static final String STAT_COLUMN_SCRAP_SPENT = "stat_total_scrap_spent";
+    private static final String STAT_COLUMN_SCRAP_EARNED = "stat_total_scrap_earned";
+    private static final String STAT_COLUMN_TAPS = "stat_total_taps";
+    private static final String STAT_COLUMN_HOLDS = "stat_total_holds";
+    private static final String STAT_COLUMN_SWIPES = "stat_total_swipes";
+
     private static final String OPTION_TABLE_NAME = "option_table";
     private static final String OPTION_COLUMN_ID = "_id";
     private static final String OPTION_COLUMN_MUSIC_VOLUME = "option_music_volume";
@@ -103,12 +111,23 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                         PET_COLUMN_PET1_BOUGHT + " INTEGER, " +
                         PET_COLUMN_PET2_BOUGHT + " INTEGER, " +
                         PET_COLUMN_PET3_BOUGHT + " INTEGER);";
+
+        String query7 =
+                "CREATE TABLE " + STAT_TABLE_NAME +
+                        " (" + STAT_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        STAT_COLUMN_SCRAP_SPENT + " INTEGER, " +
+                        STAT_COLUMN_SCRAP_EARNED + " INTEGER, " +
+                        STAT_COLUMN_TAPS + " INTEGER, " +
+                        STAT_COLUMN_HOLDS + " INTEGER, " +
+                        STAT_COLUMN_SWIPES + " INTEGER);";
+
         db.execSQL(query1);
         db.execSQL(query2);
         db.execSQL(query3);
         db.execSQL(query4);
         db.execSQL(query5);
         db.execSQL(query6);
+        db.execSQL(query7);
     }
 
     @Override
@@ -119,6 +138,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + GAME_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + WEAPON_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + PET_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + STAT_TABLE_NAME);
         onCreate(db);
     }
 
@@ -141,13 +161,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         nScrap += getScrap();
         cv.put(PLAYER_COLUMN_SCRAP_QUANTITY, nScrap);
 
-        long result = db.update(PLAYER_TABLE_NAME, cv, null, null);
-        if (result == -1) {
-            Toast.makeText(context, "Failed to add " + nScrap + " scrap", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(context, "Successfully added " + nScrap  + " scrap", Toast.LENGTH_SHORT).show();
-        }
+        db.update(PLAYER_TABLE_NAME, cv, null, null);
     }
 
     //returns current scrap
@@ -168,13 +182,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(PLAYER_COLUMN_SCRAP_QUANTITY, getScrap() - nScrap);
 
-        long result = db.update(PLAYER_TABLE_NAME, cv, null, null);
-        if (result == -1) {
-            Toast.makeText(context, "Failed to remove " + nScrap + " scrap", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(context, "Successfully removed " + nScrap + " scrap", Toast.LENGTH_SHORT).show();
-        }
+        db.update(PLAYER_TABLE_NAME, cv, null, null);
     }
 
     //change icon
@@ -185,10 +193,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         long result = db.update(PLAYER_TABLE_NAME, cv, null, null);
         if (result == -1) {
-            Toast.makeText(context, "Failed to change to icon " + nIcon, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Failed to change icon to " + nIcon, Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(context, "Successfully changed to icon " + nIcon, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Successfully changed icon to " + nIcon, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -212,10 +220,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         long result = db.update(PLAYER_TABLE_NAME, cv, null, null);
         if (result == -1) {
-            Toast.makeText(context, "Failed to change the name to " + sName, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Failed to change name to " + sName, Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(context, "Successfully changed the name to " + sName, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Successfully changed name to " + sName, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -249,10 +257,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         long result = db.update(OPTION_TABLE_NAME, cv, null, null);
         if (result == -1) {
-            Toast.makeText(context, "Failed to change the music volume to " + nVol, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Failed to change volume to " + nVol, Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(context, "Successfully changed the music volume to " + nVol, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Successfully changed volume to " + nVol, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -276,10 +284,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         long result = db.update(OPTION_TABLE_NAME, cv, null, null);
         if (result == -1) {
-            Toast.makeText(context, "Failed to change the game volume to " + nVol, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Failed to change volume to " + nVol, Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(context, "Successfully changed the game volume to " + nVol, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Successfully changed volume to " + nVol, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -313,13 +321,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(BUFF_COLUMN_TAP_LEVEL, nLevel + getTapLevel());
 
-        long result = db.update(BUFF_TABLE_NAME, cv, null, null);
-        if (result == -1) {
-            Toast.makeText(context, "Failed to change the tap level to " + nLevel, Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(context, "Successfully changed the tap level to " + nLevel, Toast.LENGTH_SHORT).show();
-        }
+        db.update(BUFF_TABLE_NAME, cv, null, null);
     }
 
     //returns tap level
@@ -340,13 +342,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(BUFF_COLUMN_HOLD_LEVEL, nLevel + getHoldLevel());
 
-        long result = db.update(BUFF_TABLE_NAME, cv, null, null);
-        if (result == -1) {
-            Toast.makeText(context, "Failed to change the hold level to " + nLevel, Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(context, "Successfully changed the hold level to " + nLevel, Toast.LENGTH_SHORT).show();
-        }
+        db.update(BUFF_TABLE_NAME, cv, null, null);
     }
 
     //returns hold level
@@ -367,13 +363,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(BUFF_COLUMN_SWIPE_LEVEL, nLevel + getSwipeLevel());
 
-        long result = db.update(BUFF_TABLE_NAME, cv, null, null);
-        if (result == -1) {
-            Toast.makeText(context, "Failed to change the swipe level to " + nLevel, Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(context, "Successfully changed the swipe level to " + nLevel, Toast.LENGTH_SHORT).show();
-        }
+        db.update(BUFF_TABLE_NAME, cv, null, null);
     }
 
     //returns tap level
@@ -407,13 +397,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(GAME_COLUMN_CURR_STAGE, getGameStage() + 1);
 
-        long result = db.update(GAME_TABLE_NAME, cv, null, null);
-        if (result == -1) {
-            Toast.makeText(context, "Failed to change the stage to " + getGameStage(), Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(context, "Successfully changed the stage to " + getGameStage(), Toast.LENGTH_SHORT).show();
-        }
+        db.update(GAME_TABLE_NAME, cv, null, null);
     }
 
     //returns stage
@@ -441,13 +425,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
         cv.put(GAME_COLUMN_CURR_ROUND, nRound);
 
-        long result = db.update(GAME_TABLE_NAME, cv, null, null);
-        if (result == -1) {
-            Toast.makeText(context, "Failed to change the round to " + nRound, Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(context, "Successfully changed the round to " + nRound, Toast.LENGTH_SHORT).show();
-        }
+        db.update(GAME_TABLE_NAME, cv, null, null);
     }
 
     //returns round
@@ -468,13 +446,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(GAME_COLUMN_CURR_HP, nHP);
 
-        long result = db.update(GAME_TABLE_NAME, cv, null, null);
-        if (result == -1) {
-            Toast.makeText(context, "Failed to change the HP to " + nHP, Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(context, "Successfully changed the HP to " + nHP, Toast.LENGTH_SHORT).show();
-        }
+        db.update(GAME_TABLE_NAME, cv, null, null);
     }
 
     //returns enemy hp
@@ -495,13 +467,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(GAME_COLUMN_CURR_HP, getGameHP() - nHP);
 
-        long result = db.update(GAME_TABLE_NAME, cv, null, null);
-        if (result == -1) {
-            Toast.makeText(context, "Failed to remove " + nHP + " HP", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(context, "Successfully removed " + nHP + " HP", Toast.LENGTH_SHORT).show();
-        }
+        db.update(GAME_TABLE_NAME, cv, null, null);
     }
 
     //set prev max hp
@@ -510,13 +476,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(GAME_COLUMN_PREV_HP, nHP);
 
-        long result = db.update(GAME_TABLE_NAME, cv, null, null);
-        if (result == -1) {
-            Toast.makeText(context, "Failed to change prev HP to " + nHP, Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(context, "Successfully changed prev HP to " + nHP, Toast.LENGTH_SHORT).show();
-        }
+        db.update(GAME_TABLE_NAME, cv, null, null);
     }
 
     //returns prev enemy hp
@@ -848,5 +808,124 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             return cursor.getInt(cursor.getColumnIndex(PET_COLUMN_PET3_BOUGHT));
         }
         return -1;
+    }
+
+    //------------------------------------------------------------------------------------------------------
+    //Weapon
+    //Insert stat
+    public void initStats() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(STAT_COLUMN_SCRAP_SPENT, 0);
+        cv.put(STAT_COLUMN_SCRAP_EARNED, 0);
+        cv.put(STAT_COLUMN_TAPS, 0);
+        cv.put(STAT_COLUMN_HOLDS, 0);
+        cv.put(STAT_COLUMN_SWIPES, 0);
+        db.insert(STAT_TABLE_NAME, null, cv);
+    }
+
+    //Update total scrap spent
+    public void updateScrapSpent(int nScrap) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        nScrap += getScrapSpent();
+        cv.put(STAT_COLUMN_SCRAP_SPENT, nScrap);
+        db.update(STAT_TABLE_NAME, cv, null, null);
+    }
+
+    //returns total scrap spent
+    public int getScrapSpent() {
+        String query = "SELECT " + STAT_COLUMN_SCRAP_SPENT + " FROM " + STAT_TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+
+        if (cursor.moveToFirst()) {
+            return cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_SCRAP_SPENT));
+        }
+        return 0;
+    }
+
+    //Update total scrap earned
+    public void updateScrapEarned(int nScrap) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        nScrap += getScrapEarned();
+        cv.put(STAT_COLUMN_SCRAP_EARNED, nScrap);
+        db.update(STAT_TABLE_NAME, cv, null, null);
+    }
+
+    //returns total scrap earned
+    public int getScrapEarned() {
+        String query = "SELECT " + STAT_COLUMN_SCRAP_EARNED + " FROM " + STAT_TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+
+        if (cursor.moveToFirst()) {
+            return cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_SCRAP_EARNED));
+        }
+        return 0;
+    }
+
+    //Update total taps
+    public void updateTotalTaps(int nTap) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        nTap += getTotalTaps();
+        cv.put(STAT_COLUMN_TAPS, nTap);
+        db.update(STAT_TABLE_NAME, cv, null, null);
+    }
+
+    //returns total taps
+    public int getTotalTaps() {
+        String query = "SELECT " + STAT_COLUMN_TAPS + " FROM " + STAT_TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+
+        if (cursor.moveToFirst()) {
+            return cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_TAPS));
+        }
+        return 0;
+    }
+
+    //Update total holds
+    public void updateTotalHolds(int nHold) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        nHold += getTotalHolds();
+        cv.put(STAT_COLUMN_HOLDS, nHold);
+        db.update(STAT_TABLE_NAME, cv, null, null);
+    }
+
+    //returns total holds
+    public int getTotalHolds() {
+        String query = "SELECT " + STAT_COLUMN_HOLDS + " FROM " + STAT_TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+
+        if (cursor.moveToFirst()) {
+            return cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_HOLDS));
+        }
+        return 0;
+    }
+
+    //Update total swipes
+    public void updateTotalSwipes(int nSwipe) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        nSwipe += getTotalSwipes();
+        cv.put(STAT_COLUMN_SWIPES, nSwipe);
+        db.update(STAT_TABLE_NAME, cv, null, null);
+    }
+
+    //returns total holds
+    public int getTotalSwipes() {
+        String query = "SELECT " + STAT_COLUMN_SWIPES + " FROM " + STAT_TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+
+        if (cursor.moveToFirst()) {
+            return cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_SWIPES));
+        }
+        return 0;
     }
 }

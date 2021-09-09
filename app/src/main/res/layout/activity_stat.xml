@@ -7,6 +7,72 @@
     android:background="#3D4F2B"
     tools:context=".StatActivity">
 
+    <TextView
+        android:id="@+id/tvNAliensKilled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="1269"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/tvAliensKilled" />
+
+    <TextView
+        android:id="@+id/tvTotalEarned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="Total scrap earned: "
+        android:textSize="42sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/tvNTotalSpent" />
+
+    <TextView
+        android:id="@+id/tvNTotalSpent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="1269"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalSpent" />
+
+    <TextView
+        android:id="@+id/tvNTotalHolds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="1269"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalHolds" />
+
+    <TextView
+        android:id="@+id/tvNTotalSwipes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="1269"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalSwipes" />
+
+    <TextView
+        android:id="@+id/tvNTotalTaps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="1269"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalTaps" />
+
     <ImageButton
         android:id="@+id/ibStatBack"
         android:layout_width="70dp"
@@ -19,20 +85,12 @@
         app:layout_constraintTop_toTopOf="@+id/guideline13"
         app:srcCompat="@drawable/button_back" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline14"
-        app:layout_constraintEnd_toStartOf="@+id/guideline12"
-        app:layout_constraintStart_toStartOf="@+id/guideline11"
-        app:layout_constraintTop_toTopOf="@+id/guideline10" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.11" />
+        app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
@@ -53,7 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.89" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline14"
@@ -61,4 +119,70 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.7" />
+
+    <TextView
+        android:id="@+id/tvAliensKilled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/apple_kid"
+        android:text="Total alien killed: "
+        android:textSize="42sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toTopOf="@+id/guideline10" />
+
+    <TextView
+        android:id="@+id/tvTotalSpent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="Total scrap spent: "
+        android:textSize="42sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/tvNAliensKilled" />
+
+    <TextView
+        android:id="@+id/tvTotalTaps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="# of taps: "
+        android:textSize="42sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/tvNTotalEarned" />
+
+    <TextView
+        android:id="@+id/tvTotalHolds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="# of holds: "
+        android:textSize="42sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/tvNTotalTaps" />
+
+    <TextView
+        android:id="@+id/tvTotalSwipes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="# of swipes: "
+        android:textSize="42sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/tvNTotalHolds" />
+
+    <TextView
+        android:id="@+id/tvNTotalEarned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/apple_kid"
+        android:text="1269"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalEarned" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

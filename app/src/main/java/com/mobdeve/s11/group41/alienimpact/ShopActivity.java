@@ -21,6 +21,7 @@ public class ShopActivity extends AppCompatActivity {
     ImageButton ibShopWeapon;
     ImageButton ibShopPets;
     TextView tvShopTitle;
+    TextView tvShopScrap;
     private ArrayList<WeaponModel> weapons;
     private ArrayList<BuffModel> buffs;
     private ArrayList<PetModel> pets;
@@ -107,6 +108,7 @@ public class ShopActivity extends AppCompatActivity {
         View overlay = findViewById(R.id.rvShop);
         overlay.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         this.tvShopTitle.setText("Buff Shop");
+        this.tvShopScrap.setText(myDB.getScrap() + " SCRAP");
 
         this.buffs = new ShopDataHelper().initializeBuffData();
         this.rv = findViewById(R.id.rvShop);
@@ -118,6 +120,7 @@ public class ShopActivity extends AppCompatActivity {
         View overlay = findViewById(R.id.rvShop);
         overlay.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         this.tvShopTitle.setText("Weapon Shop");
+        this.tvShopScrap.setText(myDB.getScrap() + " SCRAP");
 
         this.weapons = new ShopDataHelper().initializeWeaponData();
         this.rv = findViewById(R.id.rvShop);
@@ -129,6 +132,7 @@ public class ShopActivity extends AppCompatActivity {
         View overlay = findViewById(R.id.rvShop);
         overlay.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         this.tvShopTitle.setText("Pet Shop");
+        this.tvShopScrap.setText(myDB.getScrap() + " SCRAP");
 
         this.pets = new ShopDataHelper().initializePetData();
         this.rv = findViewById(R.id.rvShop);
@@ -142,6 +146,7 @@ public class ShopActivity extends AppCompatActivity {
         ibShopWeapon = findViewById(R.id.ibShopWeapon);
         ibShopPets = findViewById(R.id.ibShopPets);
         tvShopTitle = findViewById(R.id.tvShopTitle);
+        tvShopScrap = findViewById(R.id.tvShopScrap);
     }
 
     private void setFullscreen() {

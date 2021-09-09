@@ -135,6 +135,8 @@ public class GameActivity extends Activity {
                             damageEnemy(1 + (2 * buffs));
                             checkEnemy();
                             soundPool.play(soundID_tap_shoot,1, 1, 0, 0, 1);
+                            //Update stats total taps
+                            myDB.updateTotalTaps(1);
                         }
                         else if ((t2 - t1) >= 1000 && (t2 - t1) < 2000) { //1 to 1.99 seconds
                             System.out.println("hold");
@@ -142,6 +144,8 @@ public class GameActivity extends Activity {
                             damageEnemy(5 + (40 * buffs));
                             checkEnemy();
                             soundPool.play(soundID_hold_shoot,1, 1, 0, 0, 1);
+                            //Update stats total holds
+                            myDB.updateTotalHolds(1);
                         }
                         else if ((t2 - t1) >= 2000 && (t2 - t1) < 3000) { //2 to 2.99 seconds
                             System.out.println("hold");
@@ -149,6 +153,8 @@ public class GameActivity extends Activity {
                             damageEnemy((5 + (40 * buffs))*2);
                             checkEnemy();
                             soundPool.play(soundID_hold_shoot,1, 1, 0, 0, 1);
+                            //Update stats total holds
+                            myDB.updateTotalHolds(1);
                         }
                         else if ((t2 - t1) >= 3000) { // 3 seconds above
                             System.out.println("hold");
@@ -156,6 +162,8 @@ public class GameActivity extends Activity {
                             damageEnemy((5 + (40 * buffs))*3);
                             checkEnemy();
                             soundPool.play(soundID_hold_shoot,1, 1, 0, 0, 1);
+                            //Update stats total holds
+                            myDB.updateTotalHolds(1);
                         }
                         else if ((x1 != x2) || (y1 != y2) ) {
                             System.out.println("swipe");
@@ -163,6 +171,8 @@ public class GameActivity extends Activity {
                             damageEnemy(10 + (360 * buffs));
                             checkEnemy();
                             soundPool.play(soundID_swipe,1, 1, 0, 0, 1);
+                            //Update stats total swipes
+                            myDB.updateTotalSwipes(1);
                         }
                         return true;
                 }
@@ -398,6 +408,8 @@ public class GameActivity extends Activity {
         if (myDB.getGameHP() <= 0) {
             //update scrap
             myDB.updateScrap(10 * myDB.getGamePrevHP());
+            //update stats total scrap earned
+            myDB.updateScrapEarned(10 * myDB.getGamePrevHP());
             //update enemy prev hp
             myDB.updateGamePrevHP(enemyMaxHP);
             //update current enemy hp
@@ -429,6 +441,7 @@ public class GameActivity extends Activity {
             myDB.initBuffLevel();
             myDB.initWeapons();
             myDB.initPet();
+            myDB.initStats();
             myDB.updateGameHP(enemyMaxHP);
             myDB.updateGamePrevHP(enemyMaxHP);
         }

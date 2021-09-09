@@ -58,6 +58,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateWeapon0(1);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 1 hand-type weapon for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -69,6 +70,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateWeapon1(1);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 1 stick-type weapon for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -80,6 +82,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateWeapon2(1);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 1 projectile-type weapon for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -91,6 +94,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateWeapon3(1);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 1 artillery-type weapon for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -102,6 +106,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateWeapon4(1);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 1 vehicle-type weapon for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -126,6 +131,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateWeapon0(10);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 10 hand-type weapons for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -137,6 +143,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateWeapon1(10);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 10 stick-type weapons for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -148,6 +155,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateWeapon2(10);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 10 projectile-type weapons for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -159,6 +167,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateWeapon3(10);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 10 artillery-type weapons for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -170,6 +179,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateWeapon4(10);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 10 vehicle-type weapon for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -194,6 +204,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateTapLevel(1);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 1 tap level for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -205,6 +216,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateHoldLevel(1);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 1 hold level for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -216,6 +228,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateSwipeLevel(1);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 1 swipe level for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -240,6 +253,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateTapLevel(10);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 10 tap levels for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -251,6 +265,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateHoldLevel(10);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 10 hold levels for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();
@@ -262,6 +277,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             if (myDB.getScrap() >= item_cost) {
                                 myDB.updateSwipeLevel(10);
                                 myDB.removeScrap(item_cost);
+                                myDB.updateScrapSpent(item_cost);
                                 Toast.makeText(context, "Purchased 10 swipe levels for " + item_cost + " scrap.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, "Not enough scrap.", Toast.LENGTH_SHORT).show();

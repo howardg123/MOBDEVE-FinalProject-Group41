@@ -39,7 +39,7 @@
         android:id="@+id/sbMusicVolume"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/ibGameOptionDefault"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
