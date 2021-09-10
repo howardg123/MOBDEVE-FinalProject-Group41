@@ -14,6 +14,7 @@ import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -29,6 +30,10 @@ import android.widget.Toast;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class GameActivity extends Activity {
 
@@ -56,6 +61,8 @@ public class GameActivity extends Activity {
     float x2 = 0;
     float y2 = 0;
     float t2 = 0;
+
+    double dps = 0;
     MyDatabaseHelper myDB;
 
     int nEnemy;
@@ -72,6 +79,8 @@ public class GameActivity extends Activity {
     int soundID_tap_shoot;
     int soundID_swipe;
 
+    Thread dpsThread;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +93,7 @@ public class GameActivity extends Activity {
         enemyMaxHP = sh.getInt("enemyMaxHP", (int)Math.ceil(myDB.getGamePrevHP() + 10 * Math.pow(1.15, 1 + myDB.getGameRound())));
         enemyName = sh.getString("enemyName","DRONE");
         nEnemy = sh.getInt("nEnemy", 0);
+        dps = getDPS();
         initDatabase();
         setComponent();
         btnGameShop.setOnClickListener(new View.OnClickListener() {
@@ -215,14 +225,60 @@ public class GameActivity extends Activity {
                 System.out.println("changed");
             }
         });
+    }
 
+    protected double getDPS(){
+        dps = myDB.getWeapon0() * 0.1 + myDB.getWeapon1() + myDB.getWeapon2() * 10 + myDB.getWeapon3() * 100 + myDB.getWeapon4() * 1000;
+        return dps;
+    }
+
+    protected void perSecond(){
+        Log.i(MainActivity.class.getSimpleName(), "Thread ID: " + Thread.currentThread().getId());
+        GameActivity.this.runOnUiThread(new Runnable(){
+            @Override
+            public void run() {
+                damageEnemy((int) Math.ceil(getDPS()));
+                checkEnemy();
+            }
+        });
+    }
+
+    protected void initializeDPS() {
+        if (dpsThread == null) {
+            this.dpsThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+                    executorService.scheduleAtFixedRate(GameActivity.this::perSecond, 0, 1, TimeUnit.SECONDS);
+                }
+            });
+            dpsThread.run();
+        } else if (dpsThread.isAlive()){
+            dpsThread.interrupt();
+            dpsThread.run();
+        }
     }
 
     @Override
     protected void onResume(){
         super.onResume();
+        initializeDPS();
         tvGameScrap.setText(myDB.getScrap() + " SCRAP");
         setPetAndIcon();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        if (dpsThread != null)
+            dpsThread.interrupt();
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        if (dpsThread != null)
+            dpsThread.interrupt();
     }
 
     private void startShoot(){
@@ -342,6 +398,7 @@ public class GameActivity extends Activity {
         myEdit.commit();
         //set enemy
         tvEnemyHp.setText(myDB.getGameHP() + "/" + enemyMaxHP + " HP");
+        tvDPS.setText((int) Math.ceil(getDPS()) + " DPS");
         tvEnemyName.setText(enemyName);
         pbHPBar.setProgress((int)Math.floor(((float)myDB.getGameHP()/enemyMaxHP) * 100));
         //set player name and icon
