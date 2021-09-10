@@ -31,6 +31,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
+import java.util.Date;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -68,6 +69,9 @@ public class GameActivity extends Activity {
     int nEnemy;
     int enemyMaxHP;
     String enemyName;
+    int savedDay;
+    int savedMonth;
+    int savedYear;
 
     MediaPlayer mediaPlayer;
     SoundPool soundPool;
@@ -93,9 +97,14 @@ public class GameActivity extends Activity {
         enemyMaxHP = sh.getInt("enemyMaxHP", (int)Math.ceil(myDB.getGamePrevHP() + 10 * Math.pow(1.15, 1 + myDB.getGameRound())));
         enemyName = sh.getString("enemyName","DRONE");
         nEnemy = sh.getInt("nEnemy", 0);
+        savedDay = sh.getInt("savedDay", 0);
+        savedMonth = sh.getInt("savedMonth", 0);
+        savedYear = sh.getInt("savedYear", 0);
         dps = getDPS();
         initDatabase();
         setComponent();
+        //claim daily reward
+        claimDailyReward();
         btnGameShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -265,6 +274,7 @@ public class GameActivity extends Activity {
         initializeDPS();
         tvGameScrap.setText(myDB.getScrap() + " SCRAP");
         setPetAndIcon();
+        claimDailyReward();
     }
 
     @Override
@@ -395,6 +405,9 @@ public class GameActivity extends Activity {
         myEdit.putString("enemyName", enemyName);
         myEdit.putInt("enemyMaxHP", enemyMaxHP);
         myEdit.putInt("nEnemy",nEnemy);
+        myEdit.putInt("savedDay",savedDay);
+        myEdit.putInt("savedMonth",savedMonth);
+        myEdit.putInt("savedYear",savedYear);
         myEdit.commit();
         //set enemy
         tvEnemyHp.setText(myDB.getGameHP() + "/" + enemyMaxHP + " HP");
@@ -501,6 +514,25 @@ public class GameActivity extends Activity {
             myDB.initStats();
             myDB.updateGameHP(enemyMaxHP);
             myDB.updateGamePrevHP(enemyMaxHP);
+        }
+    }
+
+    private void claimDailyReward() {
+        Date date = new Date();
+        System.out.println(savedDay);
+        System.out.println(savedMonth);
+        System.out.println(savedYear);
+        if (savedDay != date.getDate() || savedMonth != date.getMonth() || savedYear != date.getYear()) {
+            savedDay = date.getDate();
+            savedMonth = date.getMonth();
+            savedYear = date.getYear();
+            int dailyScrap = (int)Math.ceil(getDPS()) * 10 * myDB.getGameStage() + 10;
+            myDB.updateScrapEarned(dailyScrap);
+            myDB.updateScrap(dailyScrap);
+            Toast.makeText(getApplicationContext(), "Daily reward: " + dailyScrap + " scraps", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            //Toast.makeText(getApplicationContext(), "Daily reward already claimed", Toast.LENGTH_SHORT).show();
         }
     }
 }

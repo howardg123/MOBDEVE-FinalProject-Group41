@@ -171,7 +171,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(PLAYER_COLUMN_SCRAP_QUANTITY));
+            int x = cursor.getInt(cursor.getColumnIndex(PLAYER_COLUMN_SCRAP_QUANTITY));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -207,7 +209,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(PLAYER_COLUMN_ICON));
+            int x = cursor.getInt(cursor.getColumnIndex(PLAYER_COLUMN_ICON));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -234,7 +238,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getString(cursor.getColumnIndex(PLAYER_COLUMN_USERNAME));
+            String x = cursor.getString(cursor.getColumnIndex(PLAYER_COLUMN_USERNAME));
+            cursor.close();
+            return x;
         }
         return "Bob";
     }
@@ -271,7 +277,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(OPTION_COLUMN_MUSIC_VOLUME));
+            int x = cursor.getInt(cursor.getColumnIndex(OPTION_COLUMN_MUSIC_VOLUME));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -298,7 +306,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(OPTION_COLUMN_GAME_VOLUME));
+            int x = cursor.getInt(cursor.getColumnIndex(OPTION_COLUMN_GAME_VOLUME));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -331,7 +341,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(BUFF_COLUMN_TAP_LEVEL));
+            int x = cursor.getInt(cursor.getColumnIndex(BUFF_COLUMN_TAP_LEVEL));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -352,7 +364,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(BUFF_COLUMN_HOLD_LEVEL));
+            int x = cursor.getInt(cursor.getColumnIndex(BUFF_COLUMN_HOLD_LEVEL));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -373,7 +387,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(BUFF_COLUMN_SWIPE_LEVEL));
+            int x = cursor.getInt(cursor.getColumnIndex(BUFF_COLUMN_SWIPE_LEVEL));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -407,7 +423,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(GAME_COLUMN_CURR_STAGE));
+            int x = cursor.getInt(cursor.getColumnIndex(GAME_COLUMN_CURR_STAGE));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -435,7 +453,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(GAME_COLUMN_CURR_ROUND));
+            int x = cursor.getInt(cursor.getColumnIndex(GAME_COLUMN_CURR_ROUND));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -456,7 +476,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(GAME_COLUMN_CURR_HP));
+            int x = cursor.getInt(cursor.getColumnIndex(GAME_COLUMN_CURR_HP));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -486,7 +508,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(GAME_COLUMN_PREV_HP));
+            int x = cursor.getInt(cursor.getColumnIndex(GAME_COLUMN_PREV_HP));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -527,7 +551,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(WEAPON_COLUMN_WEP0));
+            int x = cursor.getInt(cursor.getColumnIndex(WEAPON_COLUMN_WEP0));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -554,7 +580,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(WEAPON_COLUMN_WEP1));
+            int x = cursor.getInt(cursor.getColumnIndex(WEAPON_COLUMN_WEP1));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -581,7 +609,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(WEAPON_COLUMN_WEP2));
+            int x = cursor.getInt(cursor.getColumnIndex(WEAPON_COLUMN_WEP2));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -608,7 +638,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(WEAPON_COLUMN_WEP3));
+            int x = cursor.getInt(cursor.getColumnIndex(WEAPON_COLUMN_WEP3));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -635,7 +667,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(WEAPON_COLUMN_WEP4));
+            int x = cursor.getInt(cursor.getColumnIndex(WEAPON_COLUMN_WEP4));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -692,7 +726,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(PET_COLUMN_PET_USED));
+            int x = cursor.getInt(cursor.getColumnIndex(PET_COLUMN_PET_USED));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -720,7 +756,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(PET_COLUMN_PET0_BOUGHT));
+            int x = cursor.getInt(cursor.getColumnIndex(PET_COLUMN_PET0_BOUGHT));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -749,7 +787,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(PET_COLUMN_PET1_BOUGHT));
+            int x = cursor.getInt(cursor.getColumnIndex(PET_COLUMN_PET1_BOUGHT));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -777,7 +817,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(PET_COLUMN_PET2_BOUGHT));
+            int x = cursor.getInt(cursor.getColumnIndex(PET_COLUMN_PET2_BOUGHT));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -805,7 +847,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(PET_COLUMN_PET3_BOUGHT));
+            int x = cursor.getInt(cursor.getColumnIndex(PET_COLUMN_PET3_BOUGHT));
+            cursor.close();
+            return x;
         }
         return -1;
     }
@@ -840,7 +884,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_SCRAP_SPENT));
+            int x = cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_SCRAP_SPENT));
+            cursor.close();
+            return x;
         }
         return 0;
     }
@@ -861,7 +907,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_SCRAP_EARNED));
+            int x = cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_SCRAP_EARNED));
+            cursor.close();
+            return x;
         }
         return 0;
     }
@@ -882,7 +930,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_TAPS));
+            int x = cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_TAPS));
+            cursor.close();
+            return x;
         }
         return 0;
     }
@@ -903,7 +953,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_HOLDS));
+            int x = cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_HOLDS));
+            cursor.close();
+            return x;
         }
         return 0;
     }
@@ -924,7 +976,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()) {
-            return cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_SWIPES));
+            int x = cursor.getInt(cursor.getColumnIndex(STAT_COLUMN_SWIPES));
+            cursor.close();
+            return x;
         }
         return 0;
     }
