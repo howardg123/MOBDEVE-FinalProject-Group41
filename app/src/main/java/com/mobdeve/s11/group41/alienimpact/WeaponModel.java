@@ -24,10 +24,14 @@ public class WeaponModel {
     }
     public int getCurrentImage (int level) {
         int index = (int) Math.floor(level/100);
+        if (index >= 5)
+            index = 4;
         return imageList[index];
     }
     public String getCurrentName (int level) {
         int index = (int) Math.floor(level/100);
+        if (index >= 5)
+            index = 4;
         return nameList[index];
     }
     public String getBaseName () {
