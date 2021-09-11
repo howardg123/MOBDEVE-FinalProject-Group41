@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.gesture.Gesture;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -14,9 +13,9 @@ import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.SystemClock;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -28,14 +27,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.Date;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class GameActivity extends Activity {
 
@@ -84,7 +77,8 @@ public class GameActivity extends Activity {
     int soundID_tap_shoot;
     int soundID_swipe;
 
-    Thread dpsThread;
+    Handler handler;
+    Runnable runnable;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -270,19 +264,16 @@ public class GameActivity extends Activity {
     }
 
     protected void initializeDPS() {
-        if (dpsThread == null) {
-            this.dpsThread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-                    executorService.scheduleAtFixedRate(GameActivity.this::perSecond, 0, 1, TimeUnit.SECONDS);
-                }
-            });
-            dpsThread.run();
-        } else if (dpsThread.isAlive()){
-            dpsThread.interrupt();
-            dpsThread.run();
+        if (handler == null){
+            handler = new Handler();
         }
+        handler.postDelayed(runnable = new Runnable(){
+            @Override
+            public void run(){
+                perSecond();
+                handler.postDelayed(this, 1000);
+            }
+        }, 1000);
     }
 
     @Override
@@ -297,15 +288,8 @@ public class GameActivity extends Activity {
     @Override
     protected void onPause(){
         super.onPause();
-        if (dpsThread != null)
-            dpsThread.interrupt();
-    }
-
-    @Override
-    protected void onStop(){
-        super.onStop();
-        if (dpsThread != null)
-            dpsThread.interrupt();
+        if (handler != null && runnable != null)
+            handler.removeCallbacks(runnable);
     }
 
     private void startShoot(){
