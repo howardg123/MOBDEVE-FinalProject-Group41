@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/apple_kid"
-        android:text="GAME VOLUME"
+        android:text="SOUND EFFECTS VOLUME"
         android:textColor="#EEFFCC"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/sbGameVolume"
