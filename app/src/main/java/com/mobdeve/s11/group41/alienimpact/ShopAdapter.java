@@ -113,7 +113,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             }
                             break;
                     }
-                    ShopAdapter.this.notifyItemChanged(vh.getBindingAdapterPosition());
+                    ShopAdapter.this.notifyDataSetChanged();
                 }
             });
 
@@ -186,7 +186,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             }
                             break;
                     }
-                    ShopAdapter.this.notifyItemChanged(vh.getBindingAdapterPosition());
+                    ShopAdapter.this.notifyDataSetChanged();
                 }
             });
         } else {
@@ -235,7 +235,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             }
                             break;
                     }
-                    ShopAdapter.this.notifyItemChanged(vh.getBindingAdapterPosition());
+                    ShopAdapter.this.notifyDataSetChanged();
                 }
             });
 
@@ -284,7 +284,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopViewHolder> {
                             }
                             break;
                     }
-                    ShopAdapter.this.notifyItemChanged(vh.getBindingAdapterPosition());
+                    ShopAdapter.this.notifyDataSetChanged();
                 }
             });
         }
