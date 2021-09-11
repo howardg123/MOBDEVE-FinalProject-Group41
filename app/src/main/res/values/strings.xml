@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">AlienImpact</string>
+    <string name="tutorial_text">
+        Alert! Aliens have invaded your planet but now it\'s time to fight back. \n
+        - Killing aliens grants you scrap from their alien tech \n
+        - Aliens get stronger the more you kill \n\n
+        Players can do all sorts of attacks on the aliens to knock off their health points. \n
+        - Tap for normal damage\n
+        - Hold for medium damage\n
+        - Swipe for high damage\n\n
+        Visit the shop to spend your scrap for more firepower! \n
+        - Buy buffs for player attacks, weapons, and pets \n\n
+        Arm your allies with weapons so they can help you deal more damage automatically per second. \n
+        - Different types of weapons with varying damage \n
+        - Weapons can level up to 4 times with each 100th weapon purchase \n\n
+        Get a pet that boosts your allies\' morale and firepower \n
+        - Pets grant a damage multiplier for weapons \n\n
+        Go to the stats page to see various player stats. \n\n
+        The settings page available for setting your preferences. \n
+        - Choose a player icon and change your name. \n
+        - Adjust sound effects and music volume. \n
+        - You can also reset settings back to default. \n
+        - Don\'t forget to save your settings before you quit. \n
+
+    </string>>
 </resources>
