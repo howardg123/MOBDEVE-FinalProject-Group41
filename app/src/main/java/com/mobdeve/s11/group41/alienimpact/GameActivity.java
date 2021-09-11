@@ -146,9 +146,10 @@ public class GameActivity extends Activity {
                         x2 = event.getX();
                         y2 = event.getY();
                         t2 = SystemClock.uptimeMillis();
+                        double dist = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
                         mediaPlayer.stop();
                         stopShoot();
-                        if (x1 == x2 && y1 == y2 && (t2 - t1) < 1000) {
+                        if ((dist <= 250) && (t2 - t1) < 1000) {
                             System.out.println("click");
                             buffs = myDB.getTapLevel();
                             damageEnemy(1 + (2 * buffs));
@@ -184,7 +185,7 @@ public class GameActivity extends Activity {
                             //Update stats total holds
                             myDB.updateTotalHolds(1);
                         }
-                        else if ((x1 != x2) || (y1 != y2) ) {
+                        else if (dist > 250) {
                             System.out.println("swipe");
                             buffs = myDB.getSwipeLevel();
                             damageEnemy(10 + (360 * buffs));
