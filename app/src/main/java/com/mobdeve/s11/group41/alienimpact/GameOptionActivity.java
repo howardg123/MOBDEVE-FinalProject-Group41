@@ -43,8 +43,6 @@ public class GameOptionActivity extends AppCompatActivity {
         ibGameOptionBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GameOptionActivity.this, GameActivity.class);
-                startActivity(intent);
                 finish();
             }
         });

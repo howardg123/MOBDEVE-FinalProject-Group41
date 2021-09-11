@@ -15,6 +15,7 @@ import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -68,6 +69,7 @@ public class GameActivity extends Activity {
     int savedYear;
 
     MediaPlayer mediaPlayer;
+    public static MediaPlayer musicPlayer;
     SoundPool soundPool;
     SoundPool.Builder soundPoolBuilder;
     AudioAttributes attributes;
@@ -90,8 +92,8 @@ public class GameActivity extends Activity {
         initComponent();
         //get enemymaxhp sharedpreference
         SharedPreferences sh = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
-        enemyMaxHP = sh.getInt("enemyMaxHP", (int)Math.ceil(myDB.getGamePrevHP() + 10 * Math.pow(1.15, 1 + myDB.getGameRound())));
-        enemyName = sh.getString("enemyName","DRONE");
+        enemyMaxHP = sh.getInt("enemyMaxHP", (int) Math.ceil(myDB.getGamePrevHP() + 10 * Math.pow(1.15, 1 + myDB.getGameRound())));
+        enemyName = sh.getString("enemyName", "DRONE");
         nEnemy = sh.getInt("nEnemy", 0);
         savedDay = sh.getInt("savedDay", 0);
         savedMonth = sh.getInt("savedMonth", 0);
@@ -108,6 +110,12 @@ public class GameActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        float volume = (float) myDB.getMusicVolume() / (float) 100.0;
+        musicPlayer = MediaPlayer.create(this, R.raw.music);
+        musicPlayer.setVolume(volume, volume);
+        Log.println(Log.ERROR, "create", String.valueOf(volume));
+        musicPlayer.start();
 
 
         attributesBuilder = new AudioAttributes.Builder();
@@ -128,12 +136,12 @@ public class GameActivity extends Activity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 int buffs;
+                float gameVolume = ((float) myDB.getGameVolume() / (float) 100.0);
                 switch (event.getAction()) {
 
                     case MotionEvent.ACTION_DOWN:
                         if (mediaPlayer == null)
-                            startShoot();
-                        mediaPlayer.start();
+                            startShoot(myDB.getGameVolume());
                         x1 = event.getX();
                         y1 = event.getY();
                         t1 = SystemClock.uptimeMillis();
@@ -150,7 +158,7 @@ public class GameActivity extends Activity {
                             buffs = myDB.getTapLevel();
                             damageEnemy(1 + (2 * buffs));
                             checkEnemy();
-                            soundPool.play(soundID_tap_shoot,1, 1, 0, 0, 1);
+                            soundPool.play(soundID_tap_shoot, gameVolume, gameVolume, 0, 0, 1);
                             //Update stats total taps
                             myDB.updateTotalTaps(1);
                         }
@@ -159,7 +167,7 @@ public class GameActivity extends Activity {
                             buffs = myDB.getHoldLevel();
                             damageEnemy(5 + (40 * buffs));
                             checkEnemy();
-                            soundPool.play(soundID_hold_shoot,1, 1, 0, 0, 1);
+                            soundPool.play(soundID_hold_shoot, gameVolume, gameVolume, 0, 0, 1);
                             //Update stats total holds
                             myDB.updateTotalHolds(1);
                         }
@@ -168,7 +176,7 @@ public class GameActivity extends Activity {
                             buffs = myDB.getHoldLevel();
                             damageEnemy((5 + (40 * buffs))*2);
                             checkEnemy();
-                            soundPool.play(soundID_hold_shoot,1, 1, 0, 0, 1);
+                            soundPool.play(soundID_hold_shoot, gameVolume, gameVolume, 0, 0, 1);
                             //Update stats total holds
                             myDB.updateTotalHolds(1);
                         }
@@ -177,7 +185,7 @@ public class GameActivity extends Activity {
                             buffs = myDB.getHoldLevel();
                             damageEnemy((5 + (40 * buffs))*3);
                             checkEnemy();
-                            soundPool.play(soundID_hold_shoot,1, 1, 0, 0, 1);
+                            soundPool.play(soundID_hold_shoot, gameVolume, gameVolume, 0, 0, 1);
                             //Update stats total holds
                             myDB.updateTotalHolds(1);
                         }
@@ -186,7 +194,7 @@ public class GameActivity extends Activity {
                             buffs = myDB.getSwipeLevel();
                             damageEnemy(10 + (360 * buffs));
                             checkEnemy();
-                            soundPool.play(soundID_swipe,1, 1, 0, 0, 1);
+                            soundPool.play(soundID_swipe, gameVolume, gameVolume, 0, 0, 1);
                             //Update stats total swipes
                             myDB.updateTotalSwipes(1);
                         }
@@ -210,7 +218,6 @@ public class GameActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(GameActivity.this, GameOptionActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -281,6 +288,10 @@ public class GameActivity extends Activity {
         super.onResume();
         initializeDPS();
         tvGameScrap.setText(myDB.getScrap() + " SCRAP");
+        float musicVolume = (float) myDB.getMusicVolume() / (float) 100.0;
+        Log.println(Log.ERROR, "resume", String.valueOf(musicVolume));
+        musicPlayer.setVolume(musicVolume, musicVolume);
+        musicPlayer.start();
         setPetAndIcon();
         claimDailyReward();
     }
@@ -292,8 +303,20 @@ public class GameActivity extends Activity {
             handler.removeCallbacks(runnable);
     }
 
-    private void startShoot(){
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        if (musicPlayer != null){
+            musicPlayer.stop();
+            musicPlayer.release();
+            musicPlayer = null;
+        }
+    }
+
+    private void startShoot(float volume){
         mediaPlayer = MediaPlayer.create(this, R.raw.shoot);
+        mediaPlayer.setVolume(volume, volume);
+        mediaPlayer.start();
     }
 
     private void stopShoot(){
