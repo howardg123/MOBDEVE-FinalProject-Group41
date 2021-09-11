@@ -104,6 +104,7 @@ public class ShopActivity extends AppCompatActivity {
         });
     }
 
+    //initialize buffs page
     private void initBuffs () {
         View overlay = findViewById(R.id.rvShop);
         overlay.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
@@ -114,8 +115,16 @@ public class ShopActivity extends AppCompatActivity {
         this.rv = findViewById(R.id.rvShop);
         this.rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         this.rv.setAdapter(new ShopAdapter(this.buffs, this.myDB, ShopActivity.this));
+
+        this.rv.getAdapter().registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                tvShopScrap.setText(myDB.getScrap() + " SCRAP");
+            }
+        });
     }
 
+    //initialize weapons page
     private void initWeapons () {
         View overlay = findViewById(R.id.rvShop);
         overlay.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
@@ -126,8 +135,17 @@ public class ShopActivity extends AppCompatActivity {
         this.rv = findViewById(R.id.rvShop);
         this.rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         this.rv.setAdapter(new ShopAdapter(this.weapons, this.myDB, ShopActivity.this, 0));
+
+        this.rv.getAdapter().registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                tvShopScrap.setText(myDB.getScrap() + " SCRAP");
+            }
+        });
+
     }
 
+    //initialize pets page
     private void initPets() {
         View overlay = findViewById(R.id.rvShop);
         overlay.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
@@ -138,6 +156,13 @@ public class ShopActivity extends AppCompatActivity {
         this.rv = findViewById(R.id.rvShop);
         this.rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         this.rv.setAdapter(new PetShopAdapter(this.pets, this.myDB, ShopActivity.this));
+
+        this.rv.getAdapter().registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                tvShopScrap.setText(myDB.getScrap() + " SCRAP");
+            }
+        });
     }
 
     private void initComponent() {
