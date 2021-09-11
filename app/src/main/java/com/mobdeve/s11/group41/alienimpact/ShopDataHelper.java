@@ -40,10 +40,10 @@ public class ShopDataHelper {
     //data for pets
     public static ArrayList<PetModel> initializePetData() {
         ArrayList<PetModel> petData = new ArrayList<>();
-        petData.add(new PetModel(R.drawable.pet_turtle, "Turtle", "all weapons now deal 1.5x damage", 10000));
-        petData.add(new PetModel(R.drawable.pet_cat, "Cat", "all weapons now deal 2.0x damage", 50000));
-        petData.add(new PetModel(R.drawable.pet_dog, "Dog", "all weapons now deal 2.5x damage", 150000));
-        petData.add(new PetModel(R.drawable.pet_monkey, "Monkey", "all weapons now deal 3.0x damage", 550000));
+        petData.add(new PetModel(R.drawable.pet_turtle, "Turtle", "Weapons deal 2x damage", 10000));
+        petData.add(new PetModel(R.drawable.pet_cat, "Cat", "Weapons deal 3x damage", 50000));
+        petData.add(new PetModel(R.drawable.pet_dog, "Dog", "Weapons deal 4x damage", 150000));
+        petData.add(new PetModel(R.drawable.pet_monkey, "Monkey", "Weapons deal 5x damage", 550000));
 
         return petData;
     }

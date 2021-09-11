@@ -1,5 +1,6 @@
 package com.mobdeve.s11.group41.alienimpact;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -85,6 +86,7 @@ public class GameActivity extends Activity {
 
     Thread dpsThread;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -238,7 +240,21 @@ public class GameActivity extends Activity {
     }
 
     protected double getDPS(){
-        dps = myDB.getWeapon0() * 0.1 + myDB.getWeapon1() + myDB.getWeapon2() * 10 + myDB.getWeapon3() * 100 + myDB.getWeapon4() * 1000;
+        dps = myDB.getWeapon0() + myDB.getWeapon1() * 4 + myDB.getWeapon2() * 10 + myDB.getWeapon3() * 100 + myDB.getWeapon4() * 1000;
+        switch (myDB.getPetUsed()){
+            case 0:
+                dps *= 3;
+                break;
+            case 1:
+                dps *= 5;
+                break;
+            case 2:
+                dps *= 4;
+                break;
+            case 3:
+                dps *= 2;
+                break;
+        }
         return dps;
     }
 
