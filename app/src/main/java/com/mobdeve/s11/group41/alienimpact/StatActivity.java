@@ -2,6 +2,7 @@ package com.mobdeve.s11.group41.alienimpact;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -26,6 +27,7 @@ public class StatActivity extends AppCompatActivity {
         initComponent();
         setComponent();
         setFullscreen();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ibStatBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

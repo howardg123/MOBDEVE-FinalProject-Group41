@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -101,6 +102,8 @@ public class GameActivity extends Activity {
         dps = getDPS();
         initDatabase();
         setComponent();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         //claim daily reward
         claimDailyReward();
         btnGameShop.setOnClickListener(new View.OnClickListener() {
