@@ -3,6 +3,7 @@ package com.mobdeve.s11.group41.alienimpact;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -38,6 +39,7 @@ public class GameOptionActivity extends AppCompatActivity {
         initComponent();
         setFullscreen();
         setComponent();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         bDefault = false;
 
         ibGameOptionBack.setOnClickListener(new View.OnClickListener() {

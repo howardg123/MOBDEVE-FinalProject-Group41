@@ -3,6 +3,7 @@ package com.mobdeve.s11.group41.alienimpact;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setFullscreen();
         setContentView(R.layout.activity_main);
         initComponent();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         myDB = new MyDatabaseHelper(MainActivity.this);
         ibPlay.setOnClickListener(new View.OnClickListener() {
             @Override
